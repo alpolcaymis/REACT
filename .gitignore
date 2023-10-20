@@ -26,3 +26,5 @@ yarn-error.log*
 
 # README.md
 /readme.md
+readme.md
+*.md
