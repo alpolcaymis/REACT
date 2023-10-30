@@ -17,6 +17,39 @@ header h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+
+  transition: all 2s ease-out;
+}
+
+header h1:hover {
+  background: linear-gradient(
+    40deg,
+    #ea00ff,
+    #ea00ff,
+    #03d5ff,
+    #03d5ff,
+    #ea00ff,
+    #ea00ff,
+    #03d5ff,
+    #03d5ff
+  );
+
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+
+  animation: Animation 3s ease-out infinite;
+}
+
+@keyframes Animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 400% 0%;
+  }
 }
 
 header p {
