@@ -1,11 +1,5 @@
 
-# REACT MAIN BRANCH {}
-
-## Heading 2 {#heading-2}
-
-This is a level 2 heading with an anchor.
-
-[abc](#https://github.com/alpolcaymis/React/tree/main)
+**[REACT MAIN BRANCH]**(https://github.com/alpolcaymis/React/tree/main)
 
 
 
