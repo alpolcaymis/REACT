@@ -3,7 +3,7 @@ This repo divided many branches accordlingly my proggress on React Learning Proc
 
 * [03-basics](https://github.com/alpolcaymis/React/tree/03-basics)
 * [04-component-basics](https://github.com/alpolcaymis/React/tree/04-component-basics)
-* [04-component-basics](/React/tree/04-component-basics)
+* [04-component-basics](/alpolcaymis/React/tree/04-component-basics)
 * [04-component-basics](React/tree/04-component-basics)
 * [04-component-basics](/tree/04-component-basics)
 * [04-component-basics](tree/04-component-basics)
