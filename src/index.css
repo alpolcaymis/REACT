@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,700&family=Raleway:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,700&family=Raleway:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Bricolage Grotesque', sans-serif;
+  font-family: "Bricolage Grotesque", sans-serif;
   line-height: 1.5;
 
   color: #defaf8;
@@ -43,6 +43,14 @@ header h1 {
   letter-spacing: 1rem;
 }
 
+@media only screen and (max-width: 500px) {
+  header h1 {
+    margin: auto;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+  }
+}
 header p {
   margin: 0 auto;
   font-size: 1.15rem;
@@ -59,7 +67,7 @@ header p {
 }
 
 .places-category h2 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.5rem;
   margin: 0;
   padding: 0;
@@ -115,13 +123,14 @@ header p {
 
 .place-item img {
   width: 100%;
-  height: 100%;
+  height: 25vh;
+  /* height: 100%; */
   object-fit: cover;
   border-radius: 0.5rem;
 }
 
 .place-item h3 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: normal;
   font-size: 0.9rem;
   position: absolute;
@@ -139,7 +148,7 @@ header p {
 }
 
 #delete-confirmation h2 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.5rem;
   margin: 0;
   padding: 0;
@@ -162,7 +171,7 @@ header p {
 
 .button {
   cursor: pointer;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   padding: 0.5rem 1.5rem;
   border: none;
@@ -181,7 +190,7 @@ header p {
   background: transparent;
   border: none;
   padding: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   color: #5d0909;
 }
@@ -197,7 +206,7 @@ header p {
 }
 
 .modal {
-  min-width: 30rem;;
+  min-width: 30rem;
   padding: 0;
   z-index: 2;
   background: #d5c7bc;
