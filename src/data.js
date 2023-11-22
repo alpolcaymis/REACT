@@ -16,9 +16,6 @@ import africanSavannaImg from "./assets/african-savanna.jpg";
 import victoriaFallsImg from "./assets/victoria-falls.jpg";
 import machuPicchuImg from "./assets/machu-picchu.jpg";
 import amazonRiverImg from "./assets/amazon-river.jpg";
-import espressoLabFirstAvenue from "./assets/espressolab-first-avenue.jpg";
-import casaDeBohemia from "./assets/casa-de-bohemia.jpg";
-import minoaVillage from "./assets/minoa-village.jpeg";
 
 export const AVAILABLE_PLACES = [
   {
@@ -200,35 +197,5 @@ export const AVAILABLE_PLACES = [
     },
     lat: -3.4653,
     lon: -58.38,
-  },
-  {
-    id: "p19",
-    title: "EspressoLab First Avenue",
-    image: {
-      src: espressoLabFirstAvenue,
-      alt: "chairs and people in a coffeshop garden",
-    },
-    lat: 41.021439049662355,
-    lon: 28.626965424945464,
-  },
-  {
-    id: "p20",
-    title: "Casa De Bohemia",
-    image: {
-      src: casaDeBohemia,
-      alt: "long leaf in a coffeshop garden",
-    },
-    lat: 40.98287353787925,
-    lon: 28.789832763524977,
-  },
-  {
-    id: "p21",
-    title: "Minoa Village",
-    image: {
-      src: minoaVillage,
-      alt: "long leaf in a coffeshop garden",
-    },
-    lat: 41.08781042949404,
-    lon: 29.03169653586736,
   },
 ];
