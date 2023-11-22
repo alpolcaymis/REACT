@@ -1,9 +1,3 @@
-import northernLightsImg from "./assets/northern-lights.jpg";
-import japaneseTempleImg from "./assets/japanese-temple.jpg";
-import greatBarrierReefImg from "./assets/great-barrier-reef.jpg";
-
-import venetianCanalsImg from "./assets/venetian-canals.jpg";
-
 import espressoLabFirstAvenue from "./assets/espressolab-first-avenue.jpg";
 import minoaVillage from "./assets/minoa-village.jpeg";
 import starbucksKadikoyIskele from "./assets/starbucks-kadikoy-iskele.jpg";
@@ -11,7 +5,10 @@ import casaDeBohemia from "./assets/casa-de-bohemia.jpg";
 import mantarCafeBar from "./assets/mantar-cafe-bar.jpg";
 import alexandraCocktailBar from "./assets/alexandra-cocktail-bar.jpg";
 import nur from "./assets/nur.jpg";
-
+import marangoz from "./assets/marangoz.png";
+import rockNRolla from "./assets/rockNRolla.jpg";
+import northShieldBahcesehir from "./assets/northShieldBahcesehir.jpg";
+import emily from "./assets/emily.jpeg";
 export const AVAILABLE_PLACES = [
   {
     id: "p1",
@@ -72,6 +69,50 @@ export const AVAILABLE_PLACES = [
     },
     lat: 41.067247577783526,
     lon: 29.043709042282,
+  },
+  {
+    id: "p7",
+    title: "Marangoz Bar",
+    image: {
+      src: marangoz,
+      alt: "Lush canopy of a rainforest, teeming with life.",
+    },
+
+    lat: 40.99862223603256,
+    lon: 28.544100160944197,
+  },
+  {
+    id: "p8",
+    title: "Rock'n'Rolla",
+    image: {
+      src: rockNRolla,
+      alt: "Lush canopy of a rainforest, teeming with life.",
+    },
+
+    lat: 41.01331106351561,
+    lon: 28.644025946542925,
+  },
+  {
+    id: "p9",
+    title: "The North Shield Bahçeşehir",
+    image: {
+      src: northShieldBahcesehir,
+      alt: "Lush canopy of a rainforest, teeming with life.",
+    },
+
+    lat: 41.070276284710594,
+    lon: 28.68832990785259,
+  },
+  {
+    id: "p10",
+    title: "Emily's Garden",
+    image: {
+      src: emily,
+      alt: "Lush canopy of a rainforest, teeming with life.",
+    },
+
+    lat: 41.03059995709457,
+    lon: 28.985414878403862,
   },
 
   {
