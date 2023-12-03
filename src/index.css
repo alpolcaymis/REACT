@@ -113,12 +113,26 @@ header p {
   transform: rotate(-5deg);
 }
 
-.place-item img {
+.place-item .photo {
   width: 100%;
   /* height: 100%; */
-  height: 11rem;
+  height: 12rem;
   object-fit: cover;
   border-radius: 0.5rem;
+}
+.place-item .icon-direction {
+  position: absolute;
+  width: 10%;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.812);
+  padding: 0.15rem 0.15rem;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+}
+.place-item .icon-direction:hover {
+  border: 2px solid black;
+  transform: rotate(10deg);
 }
 
 .place-item h3 {
@@ -133,6 +147,23 @@ header p {
   border-radius: 4px;
   padding: 0.15rem 0.35rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  min-width: 8rem;
+}
+
+.place-item h4 {
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+  font-size: 0.6rem;
+  position: absolute;
+  bottom: -0.7rem;
+  right: 1.2rem;
+  margin: 1rem auto;
+  background-color: black;
+  color: #feee86;
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 #delete-confirmation {
