@@ -14,7 +14,7 @@ export default function Places({ name, places, fallbackText, onSelectPlace }) {
                 <h4>{place.borough}</h4>
                 <a href={place.location_link} target="_blank">
                   <img
-                    src="src/assets/send.png"
+                    src="./src/assets/send.png"
                     className="icon-direction"
                   ></img>
                 </a>
