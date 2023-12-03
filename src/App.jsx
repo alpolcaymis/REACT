@@ -8,11 +8,12 @@ import { sortPlacesByDistance } from "./loc.js";
 
 // import { AVAILABLE_PLACES } from "./data.js";
 // import { AVAILABLE_PLACES2 } from "./data2.js";
-import { AVAILABLE_PLACES3 } from "./data3.js";
+// import { AVAILABLE_PLACES3 } from "./data3.js";
+import { AVAILABLE_PLACES4 } from "./data4.js";
 
 const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
 const storedPlaces = storedIds.map(
-  (id) => AVAILABLE_PLACES3.find((place) => place.cid === id) // place.id =>  place.cid oldu
+  (id) => AVAILABLE_PLACES4.find((place) => place.cid === id) // place.id =>  place.cid oldu
 );
 
 function App() {
@@ -21,12 +22,10 @@ function App() {
   const [availablePlaces, setAvailablePlaces] = useState([]);
   const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
-  // console.log(availablePlaces);
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const sortedPlaces = sortPlacesByDistance(
-        AVAILABLE_PLACES3,
+        AVAILABLE_PLACES4,
         position.coords.latitude,
         position.coords.longitude
       );
@@ -49,7 +48,7 @@ function App() {
       if (prevPickedPlaces.some((place) => place.cid === id)) {
         return prevPickedPlaces;
       }
-      const place = AVAILABLE_PLACES3.find((place) => place.cid === id);
+      const place = AVAILABLE_PLACES4.find((place) => place.cid === id);
       return [place, ...prevPickedPlaces];
     });
 
@@ -71,7 +70,7 @@ function App() {
     const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
     localStorage.setItem(
       "selectedPlaces",
-      JSON.stringify(storedIds.filter((cid) => cid !== selectedPlace.current)) //? bence gerek yok yinede id'i cid yaptım
+      JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current)) //? bence gerek yok yinede id'i cid yaptım
     );
   }, []);
 

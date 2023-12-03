@@ -1,3 +1,4 @@
+// import minoaVillage from "./assets/minoa-village.jpeg";
 /* {
   id: "p1",
   title: "Minoa Village",
@@ -7,22 +8,23 @@
   },
   lat: 41.088300067231515,
   lon: 29.03179467829166,
-}, */
-// import minoaVillage from "./assets/minoa-village.jpeg";
-
-export const AVAILABLE_PLACES2 = [
-  {
+}, 
+{
     cid: "p1", // id => cid oldu
     name: "Minoa Village", // title => name oldu
     photo:
       "https://lh5.googleusercontent.com/p/AF1QipN49g8gPXXzA__06agZXiNjSAMp0j4eRd0h0Gr_=w800-h500-k-no",
-    /*  image {
+     image {
       src: minoaVillage,
       alt: "minoaVillage.",
-    } => photo:"https//safsadas.com" oldu */
+    } => photo:"https//safsadas.com" oldu 
     latitude: 41.088300067231515, // lat => latitude oldu
     longitude: 29.03179467829166, // lon => longitude oldu
   },
+
+*/
+
+export const AVAILABLE_PLACES2 = [
   {
     query: "coffee shop, 34337, Beşiktaş, İstanbul, TR",
     name: "Roastico - Coffee Shop & Bar",
