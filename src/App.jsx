@@ -9,11 +9,12 @@ import { sortPlacesByDistance } from "./loc.js";
 // import { AVAILABLE_PLACES } from "./data.js";
 // import { AVAILABLE_PLACES2 } from "./data2.js";
 // import { AVAILABLE_PLACES3 } from "./data3.js";
-import { AVAILABLE_PLACES4 } from "./data4.js";
+// import { AVAILABLE_PLACES4 } from "./data4.js";
+import { AVAILABLE_PLACES5 } from "./data5.js";
 
 const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
 const storedPlaces = storedIds.map(
-  (id) => AVAILABLE_PLACES4.find((place) => place.cid === id) // place.id =>  place.cid oldu
+  (id) => AVAILABLE_PLACES5.find((place) => place.cid === id) // place.id =>  place.cid oldu
 );
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const sortedPlaces = sortPlacesByDistance(
-        AVAILABLE_PLACES4,
+        AVAILABLE_PLACES5,
         position.coords.latitude,
         position.coords.longitude
       );
@@ -48,7 +49,7 @@ function App() {
       if (prevPickedPlaces.some((place) => place.cid === id)) {
         return prevPickedPlaces;
       }
-      const place = AVAILABLE_PLACES4.find((place) => place.cid === id);
+      const place = AVAILABLE_PLACES5.find((place) => place.cid === id);
       return [place, ...prevPickedPlaces];
     });
 
