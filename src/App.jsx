@@ -10,9 +10,9 @@ import { sortPlacesByDistance } from "./loc.js";
 // import { data2 } from "./data2.js";
 // import { data3 } from "./data3.js";
 // import { data4 } from "./data4.js";
-// import { data5 } from "./data5.js";
-import { data6 } from "./data6.js";
-let AVAILABLE_PLACES = data6;
+import { data5 } from "./data5.js";
+// import { data6 } from "./data6.js";
+let AVAILABLE_PLACES = data5;
 
 const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
 const storedPlaces = storedIds.map(
