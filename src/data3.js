@@ -1,4 +1,4 @@
-export const AVAILABLE_PLACES3 = [
+export const data3 = [
   {
     name: "Minoa Village", // title => name oldu
     photo:

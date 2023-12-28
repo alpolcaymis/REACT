@@ -24,7 +24,7 @@
 
 */
 
-export const AVAILABLE_PLACES2 = [
+export const data2 = [
   {
     query: "coffee shop, 34337, Beşiktaş, İstanbul, TR",
     name: "Roastico - Coffee Shop & Bar",

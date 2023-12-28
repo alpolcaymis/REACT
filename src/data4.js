@@ -1,4 +1,4 @@
-export const AVAILABLE_PLACES4 = [
+export const data4 = [
   {
     query:
       "https://www.google.com.tr/maps/place/Minoa+Village/@41.087948,29.0290251,17z/data=!3m1!4b1!4m6!3m5!1s0x14cab7253cf7aa13:0xe4de5e39b52c9f7!8m2!3d41.087948!4d29.0316!16s%2Fg%2F11q95110ql?entry=ttu",

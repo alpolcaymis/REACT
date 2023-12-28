@@ -7,14 +7,16 @@ import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
 // import { AVAILABLE_PLACES } from "./data.js";
-// import { AVAILABLE_PLACES2 } from "./data2.js";
-// import { AVAILABLE_PLACES3 } from "./data3.js";
-// import { AVAILABLE_PLACES4 } from "./data4.js";
-import { AVAILABLE_PLACES5 } from "./data5.js";
+// import { data2 } from "./data2.js";
+// import { data3 } from "./data3.js";
+// import { data4 } from "./data4.js";
+// import { data5 } from "./data5.js";
+import { data6 } from "./data6.js";
+let AVAILABLE_PLACES = data6;
 
 const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
 const storedPlaces = storedIds.map(
-  (id) => AVAILABLE_PLACES5.find((place) => place.cid === id) // place.id =>  place.cid oldu
+  (id) => AVAILABLE_PLACES.find((place) => place.cid === id) // place.id =>  place.cid oldu
 );
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const sortedPlaces = sortPlacesByDistance(
-        AVAILABLE_PLACES5,
+        AVAILABLE_PLACES,
         position.coords.latitude,
         position.coords.longitude
       );
@@ -49,7 +51,7 @@ function App() {
       if (prevPickedPlaces.some((place) => place.cid === id)) {
         return prevPickedPlaces;
       }
-      const place = AVAILABLE_PLACES5.find((place) => place.cid === id);
+      const place = AVAILABLE_PLACES.find((place) => place.cid === id);
       return [place, ...prevPickedPlaces];
     });
 
