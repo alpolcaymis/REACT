@@ -1,4 +1,4 @@
-function Input({ label, id, children, props }) {
+export default function Input({ label, id, ...props }) {
   return (
     <p className="control">
       <label htmlFor={id}>{label}</label>
@@ -6,5 +6,3 @@ function Input({ label, id, children, props }) {
     </p>
   );
 }
-
-export default Input;
