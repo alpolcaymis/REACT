@@ -16,21 +16,37 @@ body {
   min-height: 100vh;
 }
 
-header {
+/* header {
   margin: 2rem 0;
   text-align: center;
-}
+} */
 
 header img {
-  width: 5rem;
-  height: 5rem;
+  width: 10rem;
+  height: auto;
+  object-fit: contain;
+  /* border-radius: 50%; */
+  /* border: 2px solid #758a8a; */
+  filter: drop-shadow(0 0 4px rgba(31, 42, 42, 0.5));
+}
+img {
+  width: 10rem;
+  height: 10rem;
   object-fit: contain;
   border-radius: 50%;
   border: 2px solid #758a8a;
   filter: drop-shadow(0 0 4px rgba(31, 42, 42, 0.5));
 }
 
-header h1 {
+/* header h1 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin: 1rem 0;
+  letter-spacing: 0.2rem;
+  color: #2f4444;
+} */
+h1 {
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
   font-size: 3rem;
@@ -159,4 +175,60 @@ fieldset {
 .button-flat:focus {
   background-color: transparent;
   color: #869999;
+}
+
+input {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #758a8a;
+  background-color: #869999;
+  color: #142020;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+  color: #9bafaf;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+header {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  background: #202024;
+  border-bottom: 3px solid rgb(106, 106, 106);
+  box-shadow: 0 2px 8px rgba(193, 193, 193, 0.8);
+  white-space: nowrap;
+}
+
+.text {
+  color: #939597;
+  animation: flowing 12s linear infinite;
+  transform: translateX(100%);
+}
+.text span {
+  font-family: "Handjet", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+}
+
+.text em {
+  font-style: normal;
+  color: #00eeff;
+}
+
+@keyframes flowing {
+  100% {
+    transform: translateX(-400%);
+  }
 }

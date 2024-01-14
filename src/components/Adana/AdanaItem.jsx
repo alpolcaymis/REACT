@@ -1,5 +1,5 @@
 function AdanaItem({ id, type, amount, size, percentage, remove }) {
-  console.log("id", id);
+  // console.log("id", id);
   return (
     <li className="border-black border grid grid-cols-5 items-center place-items-center  bg-yellow-700 rounded-sm p-1 text-black">
       <select id={id} name="type" required defaultValue={type}>

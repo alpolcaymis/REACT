@@ -1,15 +1,12 @@
-import Adana from "./components/Adana/Adana.jsx";
 import Header from "./components/Header.jsx";
-import Promil from "./components/Promil.jsx";
-import Login from "./components/StateLogin.jsx";
+import BACCalculator10 from "./components/ChatGpt/BACCalculator10.jsx";
 
 function App() {
   return (
     <>
       <Header />
       <main>
-        <Promil />
-        <Adana />
+        <BACCalculator10 />
       </main>
     </>
   );

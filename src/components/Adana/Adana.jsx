@@ -22,7 +22,7 @@ function Adana() {
   const [items, setItems] = useState(initialState);
   const [count, setCount] = useState(2);
 
-  console.log(items);
+  // console.log(items);
 
   const handleAddItem = () => {
     setItems([
