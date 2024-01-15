@@ -6,6 +6,7 @@ import BeerIcon from "../icons/beer.svg";
 import WineIcon from "../icons/wine.svg";
 import DistilledIcon from "../icons/distilled.svg"; // Add the correct path to the distilled SVG icon
 import LiqueursIcon from "../icons/liqueurs.svg"; // Add the correct path to the liqueurs SVG icon
+import { XCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 
 const generateCustomId = () => {
   const timestamp = new Date().getTime();
@@ -153,8 +154,11 @@ const BACCalculator21 = () => {
   return (
     <div>
       <form className="" onSubmit={handleSubmit}>
-        <section className="gender-section ">
-          <p className="text-center">Gender</p>
+        <fieldset className="info-section border py-2">
+          <legend className="text-center">
+            <p className="px-2">Personal Information</p>
+          </legend>
+
           <div className="flex justify-around">
             <label className="border p-4 rounded-md">
               <input
@@ -178,9 +182,7 @@ const BACCalculator21 = () => {
               Woman
             </label>
           </div>
-        </section>
 
-        <section className="hw-section  ">
           <p className="text-center">Physical Apperance</p>
           <div className="flex justify-around">
             <label>
@@ -208,96 +210,137 @@ const BACCalculator21 = () => {
               />
             </label>
           </div>
-        </section>
+        </fieldset>
 
         <section className="drinks-section ">
           <p className="text-center">Drinks section</p>
           <div className=" ">
             {drinks.map((drink, index) => (
-              <div className="drink-item" key={drink.id}>
-                <label>
-                  Type:
-                  <select
-                    id={`type-${drink.id}`}
-                    value={drink.type}
-                    onChange={(e) => handleTypeChange(drink.id, e.target.value)}
-                    required
-                  >
-                    <option value="beer">Beer</option>
-                    <option value="wine">Wine</option>
-                    <option value="distilled">Distilled</option>
-                    <option value="liqueurs">Liqueurs</option>
-                    {/* Add more options for other drink types as needed */}
-                  </select>
-                  {drinkTypeIcons[drink.type]}
-                </label>
-                <label>
-                  Amount:
-                  <input
-                    type="number"
-                    placeholder="amount"
-                    id={`amount-${drink.id}`}
-                    min="0"
-                    max="20"
-                    value={drink.amount}
-                    onChange={(e) =>
-                      handleInputChange(drink.id, "amount", e.target.value)
-                    }
-                    required
-                  />
-                </label>
-                <label>
-                  Volume:
-                  <input
-                    type="number"
-                    placeholder="volume mL"
-                    id={`volume-${drink.id}`}
-                    min="1"
-                    max="1000"
-                    value={drink.volume}
-                    onChange={(e) =>
-                      handleInputChange(drink.id, "volume", e.target.value)
-                    }
-                    required
-                  />
-                </label>
-                <label>
-                  Percentage:
-                  <input
-                    type="number"
-                    placeholder="Percentage"
-                    id={`percentage-${drink.id}`}
-                    min="0"
-                    max="100"
-                    value={drink.percentage}
-                    onChange={(e) =>
-                      handleInputChange(drink.id, "percentage", e.target.value)
-                    }
-                    required
-                  />
-                </label>
-                <label>
-                  <button
-                    className="p-1 border rounded-lg"
-                    type="button"
-                    onClick={() => handleDeleteDrink(drink.id)}
-                  >
-                    Delete
-                  </button>
-                </label>
+              <div
+                className="drink-item flex gap-2 justify-between  mt-2"
+                key={drink.id}
+              >
+                <div className="drink-content flex-1 ">
+                  <label>
+                    {/* Type: */}
+                    <select
+                      id={`type-${drink.id}`}
+                      value={drink.type}
+                      onChange={(e) =>
+                        handleTypeChange(drink.id, e.target.value)
+                      }
+                      required
+                    >
+                      <option value="beer">Beer</option>
+                      <option value="wine">Wine</option>
+                      <option value="distilled">Distilled</option>
+                      <option value="liqueurs">Liqueurs</option>
+                      {/* Add more options for other drink types as needed */}
+                    </select>
+                  </label>
+
+                  <div className="flex justify-between items-center gap-2">
+                    <div className="w-[40%] h-auto">
+                      {drinkTypeIcons[drink.type]}
+                    </div>
+                    <div className="w-[50%] p-2">
+                      <label>
+                        Amount:
+                        <input
+                          type="number"
+                          placeholder="amount"
+                          id={`amount-${drink.id}`}
+                          min="0"
+                          max="20"
+                          value={drink.amount}
+                          onChange={(e) =>
+                            handleInputChange(
+                              drink.id,
+                              "amount",
+                              e.target.value
+                            )
+                          }
+                          required
+                        />
+                      </label>
+                      <label>
+                        Volume:
+                        <input
+                          type="number"
+                          placeholder="volume mL"
+                          id={`volume-${drink.id}`}
+                          min="1"
+                          max="1000"
+                          value={drink.volume}
+                          onChange={(e) =>
+                            handleInputChange(
+                              drink.id,
+                              "volume",
+                              e.target.value
+                            )
+                          }
+                          required
+                        />
+                      </label>
+                      <label>
+                        Percentage: %
+                        <input
+                          type="number"
+                          placeholder="Percentage %"
+                          id={`percentage-${drink.id}`}
+                          min="0"
+                          max="100"
+                          value={drink.percentage}
+                          onChange={(e) =>
+                            handleInputChange(
+                              drink.id,
+                              "percentage",
+                              e.target.value
+                            )
+                          }
+                          required
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="delete-icon flex-none w-[10%] ">
+                  <label>
+                    <button
+                      className="text-center"
+                      type="button"
+                      onClick={() => handleDeleteDrink(drink.id)}
+                    >
+                      <XCircleIcon
+                        className="solid rounded-lg h-8 w-8 text-red-600 mx-auto active:bg-black"
+                        fill="none"
+                        // viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      />
+                      Delete
+                    </button>
+                  </label>
+                </div>
               </div>
             ))}
           </div>
-          <button
-            className="p-2 bg-yellow-800"
-            type="button"
-            onClick={handleAddDrink}
-          >
-            Add Drink
-          </button>
+          <div className="w-full  flex justify-center bg-yellow-800 bg-transparent   border border-2 rounded-md">
+            <button className="p-2 " type="button" onClick={handleAddDrink}>
+              <PlusCircleIcon
+                className="w-6 mx-auto "
+                // fill="none"
+                // viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="0.01"
+              />
+              Add Drink
+            </button>
+          </div>
         </section>
 
-        <section className="additional-section border">
+        <section className="additional-section mt-2">
           <p className="text-center">Additional Information</p>
           <div className="">
             <label>
