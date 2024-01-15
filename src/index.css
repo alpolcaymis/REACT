@@ -81,8 +81,9 @@ select {
 }
 
 .button {
+  margin: 1rem;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 2rem;
   border-radius: 4px;
   border: none;
   background-color: #147b73;
@@ -91,7 +92,8 @@ select {
 }
 
 .button:hover,
-.button:focus {
+.button:focus,
+.button:active {
   background-color: #319890;
 }
 

@@ -83,7 +83,7 @@ const BACCalculator21 = () => {
   const renderResult = (title, value) => (
     <div>
       <h3>{title}</h3>
-      <p>{value}</p>
+      <p className="text-2xl">{value}</p>
     </div>
   );
 
@@ -154,13 +154,13 @@ const BACCalculator21 = () => {
   return (
     <div>
       <form className="" onSubmit={handleSubmit}>
-        <fieldset className="info-section border py-2">
+        <fieldset className="info-section border pb-4 p-2">
           <legend className="text-center">
-            <p className="px-2">Personal Information</p>
+            <p className="px-4">Personal Information</p>
           </legend>
 
-          <div className="flex justify-around">
-            <label className="border p-4 rounded-md">
+          <div className="flex justify-center items-center gap-3 p-2">
+            <label className=" flex-1 text-center  rounded-md">
               <input
                 type="radio"
                 id="gender-man"
@@ -170,7 +170,7 @@ const BACCalculator21 = () => {
               />
               Man
             </label>
-            <label className="border p-4 rounded-md">
+            <label className="flex-1 text-center  rounded-md">
               <input
                 className=""
                 type="radio"
@@ -183,8 +183,7 @@ const BACCalculator21 = () => {
             </label>
           </div>
 
-          <p className="text-center">Physical Apperance</p>
-          <div className="flex justify-around">
+          <div className="flex justify-around mt-2 gap-3">
             <label>
               Height (cm):
               <input
@@ -212,7 +211,7 @@ const BACCalculator21 = () => {
           </div>
         </fieldset>
 
-        <section className="drinks-section ">
+        <section className="drinks-section mt-4 ">
           <p className="text-center">Drinks section</p>
           <div className=" ">
             {drinks.map((drink, index) => (
@@ -326,14 +325,18 @@ const BACCalculator21 = () => {
               </div>
             ))}
           </div>
-          <div className="w-full  flex justify-center bg-yellow-800 bg-transparent   border border-2 rounded-md">
+          <div className="w-full mt-4 flex justify-center bg-yellow-800 bg-transparent    border border-2 rounded-md">
             <button
-              className="p-1 text-sm w-full bg-transparent  active:bg-white bg-sky-900 hover:bg-white"
+              className="flex justify-center gap-1  py-2
+              
+              text-sm w-full bg-transparent  active:bg-white hover:bg-white
+              bg-emerald-950 
+              "
               type="button"
               onClick={handleAddDrink}
             >
               <PlusCircleIcon
-                className="w-6 mx-auto "
+                className="w-6 h-6"
                 // fill="none"
                 // viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -344,12 +347,13 @@ const BACCalculator21 = () => {
           </div>
         </section>
 
-        <section className="additional-section mt-2">
-          <p className="text-center">Additional Information</p>
-          <div className="">
+        <fieldset className="additional-section my-4 border">
+          <legend className="text-center  px-5">Additional Information</legend>
+          <div className="text-center">
             <label>
               How many hours have passed since the first drink?
               <input
+                className="w-[80%] mb-2"
                 type="number"
                 id="hours"
                 min="0"
@@ -359,30 +363,40 @@ const BACCalculator21 = () => {
               />
             </label>
           </div>
-        </section>
+        </fieldset>
 
-        <section className="calculate-button-section border">
-          <button type="submit" className="button">
-            Calculate BAC
-          </button>
-        </section>
-
-        <section className="results-section border">
-          <p className="text-center">Result Section</p>
-          <div className="">
-            {renderResult("Blood Volume (ml)", bloodVolume.toFixed(2))}
-            {renderResult("Total Alcohol Millimeter", totalAlcoholMillimeter)}
-            {renderResult("Total Alcohol Milligram", totalAlcoholMilligram)}
-            {renderResult(
-              "Calculated BAC Before Deduction (per 100 milliliters)",
-              calculatedBACBeforeDeduction.toFixed(2)
-            )}
-            {renderResult(
-              "Calculated BAC After Deduction (per 100 milliliters)",
-              calculatedBACAfterDeduction.toFixed(2)
-            )}
+        <section className="calculate-button-section ">
+          <div className="flex justify-center">
+            <button type="submit" className="button">
+              Calculate BAC
+            </button>
           </div>
         </section>
+
+        <fieldset className="results-section border">
+          <legend className="text-center m-2 p-2 border">Result Section</legend>
+          <div className="  text-center">
+            <div className="font-bold text-3xl p-1 border">
+              {renderResult(
+                "Calculated BAC  ",
+                <div className="text-5xl p-1">
+                  {calculatedBACAfterDeduction.toFixed(2)}
+                </div>
+              )}
+              <p className="text-base">(per 100 milliliters)</p>
+            </div>
+            <div>
+              {renderResult("Blood Volume (mL)", bloodVolume.toFixed(2))}
+              {renderResult("Total Alcohol (mL)", totalAlcoholMillimeter)}
+              {renderResult("Total Alcohol Milligram", totalAlcoholMilligram)}
+              {renderResult(
+                "Calculated BAC Before Time Effect Deduction ",
+                calculatedBACBeforeDeduction.toFixed(2)
+              )}
+              <p className="text-xs">(per 100 milliliters)</p>
+            </div>
+          </div>
+        </fieldset>
         {""}
       </form>
     </div>
