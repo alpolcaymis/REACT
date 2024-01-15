@@ -27,7 +27,7 @@ const BACCalculator20 = () => {
   const [gender, setGender] = useState("man");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [hoursPassed, setHoursPassed] = useState(""); // New state for hours passed
+  const [hoursPassed, setHoursPassed] = useState(0); // New state for hours passed
 
   const [totalAlcoholMillimeter, setTotalAlcoholMillimeter] = useState(0);
   const [totalAlcoholMilligram, setTotalAlcoholMilligram] = useState(0);
@@ -162,6 +162,7 @@ const BACCalculator20 = () => {
               <label>
                 <input
                   type="radio"
+                  id="gender-man"
                   value="man"
                   checked={gender === "man"}
                   onChange={() => setGender("man")}
@@ -171,6 +172,7 @@ const BACCalculator20 = () => {
               <label>
                 <input
                   type="radio"
+                  id="gender-female"
                   value="woman"
                   checked={gender === "woman"}
                   onChange={() => setGender("woman")}
@@ -184,10 +186,12 @@ const BACCalculator20 = () => {
             Height (cm):
             <input
               type="number"
+              id="height"
               min="110"
               max="230"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
+              required
             />
           </label>
         </div>
@@ -196,10 +200,12 @@ const BACCalculator20 = () => {
             Weight (kg):
             <input
               type="number"
+              id="weight"
               min="40"
               max="250"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
+              required
             />
           </label>
         </div>
@@ -210,6 +216,7 @@ const BACCalculator20 = () => {
             <label>
               Type:
               <select
+                id={`type-${drink.id}`}
                 value={drink.type}
                 onChange={(e) => handleTypeChange(drink.id, e.target.value)}
                 required
@@ -227,36 +234,42 @@ const BACCalculator20 = () => {
               Amount:
               <input
                 type="number"
+                id={`amount-${drink.id}`}
                 min="0"
                 max="20"
                 value={drink.amount}
                 onChange={(e) =>
                   handleInputChange(drink.id, "amount", e.target.value)
                 }
+                required
               />
             </label>
             <label>
               Volume:
               <input
                 type="number"
+                id={`volume-${drink.id}`}
                 min="1"
                 max="1000"
                 value={drink.volume}
                 onChange={(e) =>
                   handleInputChange(drink.id, "volume", e.target.value)
                 }
+                required
               />
             </label>
             <label>
               Percentage:
               <input
                 type="number"
+                id={`percentage-${drink.id}`}
                 min="0"
                 max="100"
                 value={drink.percentage}
                 onChange={(e) =>
                   handleInputChange(drink.id, "percentage", e.target.value)
                 }
+                required
               />
             </label>
             <button type="button" onClick={() => handleDeleteDrink(drink.id)}>
@@ -270,6 +283,8 @@ const BACCalculator20 = () => {
             How many hours have passed since the first drink?
             <input
               type="number"
+              id="hours"
+              min="0"
               value={hoursPassed}
               onChange={(e) => setHoursPassed(e.target.value)}
               required
