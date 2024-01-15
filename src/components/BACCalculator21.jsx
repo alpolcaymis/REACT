@@ -327,7 +327,11 @@ const BACCalculator21 = () => {
             ))}
           </div>
           <div className="w-full  flex justify-center bg-yellow-800 bg-transparent   border border-2 rounded-md">
-            <button className="p-2 " type="button" onClick={handleAddDrink}>
+            <button
+              className="p-1 text-sm w-full bg-transparent  active:bg-white bg-sky-900 hover:bg-white"
+              type="button"
+              onClick={handleAddDrink}
+            >
               <PlusCircleIcon
                 className="w-6 mx-auto "
                 // fill="none"
