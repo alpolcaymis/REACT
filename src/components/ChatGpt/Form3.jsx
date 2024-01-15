@@ -7,6 +7,7 @@
         <label>
           <input
             type="radio"
+            id="gender-man"
             value="man"
             checked={gender === "man"}
             onChange={() => setGender("man")}
@@ -16,6 +17,7 @@
         <label>
           <input
             type="radio"
+            id="gender-female"
             value="woman"
             checked={gender === "woman"}
             onChange={() => setGender("woman")}
@@ -26,19 +28,26 @@
     </label>
     <br />
     <label>
-      Height (in centimeters):
+      Height (cm):
       <input
         type="number"
+        id="height"
+        min="110"
+        max="230"
         value={height}
         onChange={(e) => setHeight(e.target.value)}
         required
       />
     </label>
-    <br />
+  </div>
+  <div>
     <label>
-      Weight (in kilograms):
+      Weight (kg):
       <input
         type="number"
+        id="weight"
+        min="40"
+        max="250"
         value={weight}
         onChange={(e) => setWeight(e.target.value)}
         required
@@ -46,76 +55,81 @@
     </label>
   </div>
 
-  {drinks.map(
-    (drink) => (
-      console.log(drink.id),
-      (
-        <div key={drink.id}>
-          <h3>Drink {drink.id}</h3>
-          <label>
-            Type:
-            <select
-              value={drink.type}
-              onChange={(e) => handleTypeChange(drink.id, e.target.value)}
-              required
-            >
-              <option value="beer">Beer</option>
-              <option value="wine">Wine</option>
-              <option value="distilled">Distilled</option>
-              <option value="liqueurs">Liqueurs</option>
-              {/* Add more options for other drink types as needed */}
-            </select>
-            {drinkTypeIcons[drink.type]}
-          </label>
-          <br />
-          <label>
-            Amount (number of drinks):
-            <input
-              type="number"
-              value={drink.amount}
-              onChange={(e) =>
-                handleInputChange(index, "amount", e.target.value)
-              }
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Volume per drink (in milliliters):
-            <input
-              type="number"
-              value={drink.volume}
-              onChange={(e) =>
-                handleInputChange(index, "volume", e.target.value)
-              }
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Alcohol content percentage:
-            <input
-              type="number"
-              value={drink.percentage}
-              onChange={(e) =>
-                handleInputChange(index, "percentage", e.target.value)
-              }
-              required
-            />
-          </label>
-          <button type="button" onClick={() => handleDeleteDrink(drink.id)}>
-            Delete Drink
-          </button>
-        </div>
-      )
-    )
-  )}
+  {drinks.map((drink, index) => (
+    <div key={drink.id}>
+      <h3>Drink #{index + 1}</h3>
+      <label>
+        Type:
+        <select
+          id={`type-${drink.id}`}
+          value={drink.type}
+          onChange={(e) => handleTypeChange(drink.id, e.target.value)}
+          required
+        >
+          <option value="beer">Beer</option>
+          <option value="wine">Wine</option>
+          <option value="distilled">Distilled</option>
+          <option value="liqueurs">Liqueurs</option>
+          {/* Add more options for other drink types as needed */}
+        </select>
+        {drinkTypeIcons[drink.type]}
+      </label>
+      <br />
+      <label>
+        Amount:
+        <input
+          type="number"
+          id={`amount-${drink.id}`}
+          min="0"
+          max="20"
+          value={drink.amount}
+          onChange={(e) =>
+            handleInputChange(drink.id, "amount", e.target.value)
+          }
+          required
+        />
+      </label>
+      <label>
+        Volume:
+        <input
+          type="number"
+          id={`volume-${drink.id}`}
+          min="1"
+          max="1000"
+          value={drink.volume}
+          onChange={(e) =>
+            handleInputChange(drink.id, "volume", e.target.value)
+          }
+          required
+        />
+      </label>
+      <label>
+        Percentage:
+        <input
+          type="number"
+          id={`percentage-${drink.id}`}
+          min="0"
+          max="100"
+          value={drink.percentage}
+          onChange={(e) =>
+            handleInputChange(drink.id, "percentage", e.target.value)
+          }
+          required
+        />
+      </label>
+      <button type="button" onClick={() => handleDeleteDrink(drink.id)}>
+        Delete Drink
+      </button>
+    </div>
+  ))}
   <div>
     <h3>Additional Information</h3>
     <label>
       How many hours have passed since the first drink?
       <input
         type="number"
+        id="hours"
+        min="0"
         value={hoursPassed}
         onChange={(e) => setHoursPassed(e.target.value)}
         required
