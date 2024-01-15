@@ -1,4 +1,4 @@
-import BACCalculator19 from "./components/ChatGpt/BACCalculator19.jsx";
+import BACCalculator20 from "./components/ChatGpt/BACCalculator20.jsx";
 import Header from "./components/Header.jsx";
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <>
       <Header />
       <main>
-        <BACCalculator19 />
+        <BACCalculator20 />
       </main>
     </>
   );

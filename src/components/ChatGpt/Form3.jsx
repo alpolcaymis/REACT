@@ -46,61 +46,70 @@
     </label>
   </div>
 
-  {drinks.map((drink, index) => (
-    <div key={index}>
-      <h3>Drink {index + 1}</h3>
-      <label>
-        Type:
-        <select
-          value={drink.type}
-          onChange={(e) => handleTypeChange(index, e.target.value)}
-          required
-        >
-          <option value="beer">Beer</option>
-          <option value="wine">Wine</option>
-          <option value="distilled">Distilled</option>
-          <option value="liqueurs">Liqueurs</option>
-          {/* Add more options for other drink types as needed */}
-        </select>
-        {drinkTypeIcons[drink.type]}
-      </label>
-      <br />
-      <label>
-        Amount (number of drinks):
-        <input
-          type="number"
-          value={drink.amount}
-          onChange={(e) => handleInputChange(index, "amount", e.target.value)}
-          required
-        />
-      </label>
-      <br />
-      <label>
-        Volume per drink (in milliliters):
-        <input
-          type="number"
-          value={drink.volume}
-          onChange={(e) => handleInputChange(index, "volume", e.target.value)}
-          required
-        />
-      </label>
-      <br />
-      <label>
-        Alcohol content percentage:
-        <input
-          type="number"
-          value={drink.percentage}
-          onChange={(e) =>
-            handleInputChange(index, "percentage", e.target.value)
-          }
-          required
-        />
-      </label>
-      <button type="button" onClick={() => handleDeleteDrink(index)}>
-        Delete Drink
-      </button>
-    </div>
-  ))}
+  {drinks.map(
+    (drink) => (
+      console.log(drink.id),
+      (
+        <div key={drink.id}>
+          <h3>Drink {drink.id}</h3>
+          <label>
+            Type:
+            <select
+              value={drink.type}
+              onChange={(e) => handleTypeChange(drink.id, e.target.value)}
+              required
+            >
+              <option value="beer">Beer</option>
+              <option value="wine">Wine</option>
+              <option value="distilled">Distilled</option>
+              <option value="liqueurs">Liqueurs</option>
+              {/* Add more options for other drink types as needed */}
+            </select>
+            {drinkTypeIcons[drink.type]}
+          </label>
+          <br />
+          <label>
+            Amount (number of drinks):
+            <input
+              type="number"
+              value={drink.amount}
+              onChange={(e) =>
+                handleInputChange(index, "amount", e.target.value)
+              }
+              required
+            />
+          </label>
+          <br />
+          <label>
+            Volume per drink (in milliliters):
+            <input
+              type="number"
+              value={drink.volume}
+              onChange={(e) =>
+                handleInputChange(index, "volume", e.target.value)
+              }
+              required
+            />
+          </label>
+          <br />
+          <label>
+            Alcohol content percentage:
+            <input
+              type="number"
+              value={drink.percentage}
+              onChange={(e) =>
+                handleInputChange(index, "percentage", e.target.value)
+              }
+              required
+            />
+          </label>
+          <button type="button" onClick={() => handleDeleteDrink(drink.id)}>
+            Delete Drink
+          </button>
+        </div>
+      )
+    )
+  )}
   <div>
     <h3>Additional Information</h3>
     <label>

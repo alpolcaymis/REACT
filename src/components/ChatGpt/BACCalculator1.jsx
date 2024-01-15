@@ -7,7 +7,7 @@ import WineIcon from "../../icons/wine.svg";
 import DistilledIcon from "../../icons/distilled.svg"; // Add the correct path to the distilled SVG icon
 import LiqueursIcon from "../../icons/liqueurs.svg"; // Add the correct path to the liqueurs SVG icon
 
-const BACCalculator19 = () => {
+const BACCalculator1 = () => {
   const [drinks, setDrinks] = useState([
     { type: "beer", amount: "", volume: "", percentage: "" }, // Initial drink input group
   ]);
@@ -270,4 +270,4 @@ const BACCalculator19 = () => {
   );
 };
 
-export default BACCalculator19;
+export default BACCalculator1;

@@ -8,16 +8,21 @@ import DistilledIcon from "../../icons/distilled.svg"; // Add the correct path t
 import LiqueursIcon from "../../icons/liqueurs.svg"; // Add the correct path to the liqueurs SVG icon
 
 const generateCustomId = () => {
-  // const timestamp = new Date().getTime();
+  const timestamp = new Date().getTime();
   const random = Math.floor(Math.random() * 1000);
-  // return `${timestamp}-${random}`;
-  return `${random}`;
+  return `${timestamp}-${random}`;
 };
 
 const BACCalculator20 = () => {
-  const [drinks, setDrinks] = useState([
-    { type: "beer", amount: "", volume: "", percentage: "" }, // Initial drink input group
-  ]);
+  const initialDrink = {
+    id: generateCustomId(),
+    type: "beer",
+    amount: "",
+    volume: "",
+    percentage: "",
+  };
+
+  const [drinks, setDrinks] = useState([initialDrink]);
 
   const [gender, setGender] = useState("man");
   const [height, setHeight] = useState("");
@@ -120,26 +125,34 @@ const BACCalculator20 = () => {
     ]);
   };
 
-  const handleDeleteDrink = (index) => {
-    const updatedDrinks = [...drinks];
-    updatedDrinks.splice(index, 1);
+  const handleDeleteDrink = (id) => {
+    const updatedDrinks = drinks.filter((drink) => drink.id !== id);
     setDrinks(updatedDrinks);
   };
 
-  const handleInputChange = (index, fieldName, value) => {
-    const updatedDrinks = [...drinks];
-    updatedDrinks[index][fieldName] = value;
+  const handleInputChange = (id, fieldName, value) => {
+    const updatedDrinks = drinks.map((drink) => {
+      if (drink.id === id) {
+        return { ...drink, [fieldName]: value };
+      }
+      return drink;
+    });
     setDrinks(updatedDrinks);
   };
 
-  const handleTypeChange = (index, value) => {
-    const updatedDrinks = [...drinks];
-    updatedDrinks[index].type = value;
+  const handleTypeChange = (id, value) => {
+    const updatedDrinks = drinks.map((drink) => {
+      if (drink.id === id) {
+        return { ...drink, type: value };
+      }
+      return drink;
+    });
     setDrinks(updatedDrinks);
   };
 
   return (
     <div>
+      <h2>Blood Alcohol Concentration Calculator</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <h3>Personal Information</h3>
@@ -168,29 +181,32 @@ const BACCalculator20 = () => {
           </label>
           <br />
           <label>
-            Height (in centimeters):
+            Height (cm):
             <input
               type="number"
+              min="110"
+              max="230"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              required
             />
           </label>
-          <br />
+        </div>
+        <div>
           <label>
-            Weight (in kilograms):
+            Weight (kg):
             <input
               type="number"
+              min="40"
+              max="250"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              required
             />
           </label>
         </div>
 
-        {drinks.map((drink) => (
+        {drinks.map((drink, index) => (
           <div key={drink.id}>
-            <h3>Drink {drink.id}</h3>
+            <h3>Drink #{index + 1}</h3>
             <label>
               Type:
               <select
@@ -208,38 +224,39 @@ const BACCalculator20 = () => {
             </label>
             <br />
             <label>
-              Amount (number of drinks):
+              Amount:
               <input
                 type="number"
+                min="0"
+                max="20"
                 value={drink.amount}
                 onChange={(e) =>
-                  handleInputChange(index, "amount", e.target.value)
+                  handleInputChange(drink.id, "amount", e.target.value)
                 }
-                required
               />
             </label>
-            <br />
             <label>
-              Volume per drink (in milliliters):
+              Volume:
               <input
                 type="number"
+                min="1"
+                max="1000"
                 value={drink.volume}
                 onChange={(e) =>
-                  handleInputChange(index, "volume", e.target.value)
+                  handleInputChange(drink.id, "volume", e.target.value)
                 }
-                required
               />
             </label>
-            <br />
             <label>
-              Alcohol content percentage:
+              Percentage:
               <input
                 type="number"
+                min="0"
+                max="100"
                 value={drink.percentage}
                 onChange={(e) =>
-                  handleInputChange(index, "percentage", e.target.value)
+                  handleInputChange(drink.id, "percentage", e.target.value)
                 }
-                required
               />
             </label>
             <button type="button" onClick={() => handleDeleteDrink(drink.id)}>
