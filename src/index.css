@@ -104,7 +104,7 @@ select {
 /* FLOW BANNER CSS */
 .text {
   color: #939597;
-  animation: flowing 15s linear infinite;
+  animation: flowing 10s linear infinite;
   transform: translateX(100%);
 }
 .text span {
@@ -121,6 +121,9 @@ select {
 
 @keyframes flowing {
   100% {
-    transform: translateX(-1000%);
+    transform: translateX(-200%);
+  }
+  0% {
+    transform: translateX(0%);
   }
 }

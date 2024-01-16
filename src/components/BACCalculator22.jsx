@@ -277,7 +277,7 @@ const BACCalculator22 = () => {
                 type="number"
                 id="height"
                 min="110"
-                max="230"
+                max="250"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
                 required
@@ -289,7 +289,7 @@ const BACCalculator22 = () => {
                 type="number"
                 id="weight"
                 min="40"
-                max="250"
+                max="300"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
                 required
@@ -319,8 +319,12 @@ const BACCalculator22 = () => {
                     >
                       <option value="beer">Beer</option>
                       <option value="wine">Wine</option>
-                      <option value="distilled">Distilled</option>
-                      <option value="liqueurs">Liqueurs</option>
+                      <option value="distilled">
+                        Distilled (vodka,gin,tequila...)
+                      </option>
+                      <option value="liqueurs">
+                        Liqueurs (Baileys,Jägermeister,Campari...)
+                      </option>
                       {/* Add more options for other drink types as needed */}
                     </select>
                   </label>
@@ -333,10 +337,12 @@ const BACCalculator22 = () => {
                       <label>
                         Amount:
                         <input
+                          className="placeholder-zinc-300"
                           type="number"
+                          placeholder="quantity"
                           id={`amount-${drink.id}`}
                           min="0"
-                          max="20"
+                          max="30"
                           value={drink.amount}
                           onChange={(e) =>
                             handleInputChange(
@@ -345,15 +351,18 @@ const BACCalculator22 = () => {
                               e.target.value
                             )
                           }
+                          required
                         />
                       </label>
                       <label>
                         Volume:
                         <input
                           type="number"
+                          className="placeholder-zinc-300"
+                          placeholder="volume mL"
                           id={`volume-${drink.id}`}
                           min="1"
-                          max="1000"
+                          max="2000"
                           value={drink.volume}
                           onChange={(e) =>
                             handleInputChange(
@@ -362,12 +371,15 @@ const BACCalculator22 = () => {
                               e.target.value
                             )
                           }
+                          required
                         />
                       </label>
                       <label>
-                        Percentage:
+                        Percentage: %
                         <input
                           type="number"
+                          className="placeholder-zinc-300"
+                          placeholder="vol % abv"
                           id={`percentage-${drink.id}`}
                           min="0"
                           max="100"
@@ -379,6 +391,7 @@ const BACCalculator22 = () => {
                               e.target.value
                             )
                           }
+                          required
                         />
                       </label>
                     </div>
@@ -463,11 +476,9 @@ const BACCalculator22 = () => {
               style={{ backgroundColor, color }}
               className="flex justify-around items-center min-h-12"
             >
-              {/* <h3>Calculated BAC After Deduction (per 100 milliliters):</h3> */}
-              {/* <p>{calculatedBACAfterDeduction.toFixed(2)}</p> */}
-              <div className="w-fit">{icon}</div>
-              <p className="flex-1 ">{message}</p>
-              <div className="w-fit">{symbol}</div>
+              <div className="">{icon}</div>
+              <p className=" text-center">{message}</p>
+              <div className="">{symbol}</div>
             </div>
           )}
 
