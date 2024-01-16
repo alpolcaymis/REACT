@@ -46,6 +46,12 @@ input {
   color: #142020;
 }
 
+input[type="radio"] {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+  transform: scale(1.5);
+}
+
 img {
   border-bottom-right-radius: 50%;
   /* border-bottom-left-radius: 50%; */
