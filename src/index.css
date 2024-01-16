@@ -124,6 +124,6 @@ select {
     transform: translateX(-200%);
   }
   0% {
-    transform: translateX(0%);
+    transform: translateX(100%);
   }
 }
