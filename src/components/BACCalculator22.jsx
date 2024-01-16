@@ -335,10 +335,10 @@ const BACCalculator22 = () => {
               </div>
             ))}
           </div>
-          <div className="w-full mt-4 flex justify-center bg-[#99530d8b] bg-transparent    border border-2 rounded-md">
+          <div className="w-full mt-4 flex justify-center bg-[#ff8d1c]  border-2 rounded-md">
             <button
               className="flex justify-center items-center gap-1 py-2              
-              text-sm w-full    bg-white bg-opacity-25 hover:bg-opacity-45 focus:bg-opacity-45 active:bg-opacity-45
+              text-sm w-full    bg-opacity-25 hover:bg-opacity-45 focus:bg-opacity-45 active:bg-opacity-45
               bg-emerald-950 
               "
               type="button"
