@@ -14,7 +14,7 @@ const generateCustomId = () => {
   return `${timestamp}-${random}`;
 };
 
-const BACCalculator21 = () => {
+const BACCalculator22 = () => {
   const initialDrink = {
     id: generateCustomId(),
     type: "beer",
@@ -144,7 +144,7 @@ const BACCalculator21 = () => {
   const handleTypeChange = (id, value) => {
     const updatedDrinks = drinks.map((drink) => {
       if (drink.id === id) {
-        return { ...drink, type: value };
+        return { ...drink, type: value, ...getDefaultValuesForType(value) };
       }
       return drink;
     });
@@ -403,4 +403,4 @@ const BACCalculator21 = () => {
   );
 };
 
-export default BACCalculator21;
+export default BACCalculator22;
