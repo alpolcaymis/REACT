@@ -4,9 +4,13 @@ import React, { useState, useEffect } from "react";
 // Import SVG icons
 import BeerIcon from "../icons/beer.svg";
 import WineIcon from "../icons/wine.svg";
-import DistilledIcon from "../icons/distilled.svg"; // Add the correct path to the distilled SVG icon
-import LiqueursIcon from "../icons/liqueurs.svg"; // Add the correct path to the liqueurs SVG icon
+import DistilledIcon from "../icons/distilled.svg";
+import LiqueursIcon from "../icons/liqueurs.svg";
+import JagerIcon from "../icons/jager.png";
+import VodkaIcon from "../icons/vodka.svg";
+import WhiskeyIcon from "../icons/whiskey.svg";
 import { XCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
+import TimeIcon4 from "../assets/time4.svg";
 
 const generateCustomId = () => {
   const timestamp = new Date().getTime();
@@ -91,9 +95,24 @@ const BACCalculator22 = () => {
   const drinkTypeIcons = {
     beer: <img src={BeerIcon} alt="Beer Icon" />,
     wine: <img src={WineIcon} alt="Wine Icon" />,
-    distilled: <img src={DistilledIcon} alt="Distilled Icon" />, // Add the correct path to the distilled SVG icon
-    liqueurs: <img src={LiqueursIcon} alt="Liqueurs Icon" />, // Add the correct path to the liqueurs SVG icon
-    // Add more entries for other drink types and their corresponding icons
+    distilled: (
+      <div className="relative">
+        <img
+          className="absolute  right-3/4 w-1/2 bottom-0 border-none"
+          src={LiqueursIcon}
+          alt="Distilled Icon"
+        />
+        <img
+          className="absolute right-4  mr-2 bottom-0 border-none"
+          src={VodkaIcon}
+          alt="Distilled Icon"
+        />
+
+        <img className="" src={DistilledIcon} alt="Distilled Icon" />
+      </div>
+    ),
+
+    liqueurs: <img src={JagerIcon} alt="Liqueurs Icon" />,
   };
 
   const handleSubmit = (e) => {
@@ -270,11 +289,13 @@ const BACCalculator22 = () => {
             </label>
           </div>
 
-          <div className="flex justify-around mt-2 gap-3">
+          <div className="flex justify-around  mt-2 gap-3">
             <label>
               Height (cm):
               <input
                 type="number"
+                className="placeholder-zinc-300"
+                placeholder="centimeter"
                 id="height"
                 min="110"
                 max="250"
@@ -287,6 +308,8 @@ const BACCalculator22 = () => {
               Weight (kg):
               <input
                 type="number"
+                className="placeholder-zinc-300"
+                placeholder="kilogram"
                 id="weight"
                 min="40"
                 max="300"
@@ -335,7 +358,7 @@ const BACCalculator22 = () => {
                     </div>
                     <div className="w-[50%] p-2">
                       <label>
-                        Amount:
+                        Amount : #
                         <input
                           className="placeholder-zinc-300"
                           type="number"
@@ -355,7 +378,7 @@ const BACCalculator22 = () => {
                         />
                       </label>
                       <label>
-                        Volume:
+                        Volume : (mL)
                         <input
                           type="number"
                           className="placeholder-zinc-300"
@@ -375,7 +398,7 @@ const BACCalculator22 = () => {
                         />
                       </label>
                       <label>
-                        Percentage: %
+                        Percentage : %
                         <input
                           type="number"
                           className="placeholder-zinc-300"
@@ -441,9 +464,18 @@ const BACCalculator22 = () => {
         </section>
 
         <fieldset className="additional-section my-4 border">
-          <legend className="text-center  px-5">Additional Information</legend>
+          <legend className="text-center  px-5">
+            <div className="flex justify-center items-center gap-1">
+              Additional Information
+              <img
+                src={TimeIcon4}
+                alt="timeicon"
+                className="w-10 border-none"
+              />
+            </div>
+          </legend>
           <div className="flex flex-wrap justify-center text-center">
-            <label className="">
+            <label htmlFor="hours" className="">
               How many hours have passed since the first drink?
             </label>
             <input
@@ -496,7 +528,10 @@ const BACCalculator22 = () => {
             <div>
               {renderResult("Blood Volume (mL)", bloodVolume.toFixed(2))}
               {renderResult("Total Alcohol (mL)", totalAlcoholMillimeter)}
-              {renderResult("Total Alcohol Milligram", totalAlcoholMilligram)}
+              {renderResult(
+                "Total Alcohol Milligram",
+                totalAlcoholMilligram.toFixed(2)
+              )}
               {renderResult(
                 "Calculated BAC Before Time Effect Deduction ",
                 calculatedBACBeforeDeduction.toFixed(2)
