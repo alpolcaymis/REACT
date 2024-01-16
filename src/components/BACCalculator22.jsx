@@ -37,6 +37,7 @@ const BACCalculator22 = () => {
     useState(0);
   const [calculatedBACAfterDeduction, setCalculatedBACAfterDeduction] =
     useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
     // Use useEffect to handle the calculation after state updates
@@ -97,6 +98,7 @@ const BACCalculator22 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormSubmitted(true);
     let totalAlcohol = 0;
     drinks.forEach((drink) => {
       const alcoholMillimeter = calculateAlcoholMillimeter(
@@ -166,6 +168,75 @@ const BACCalculator22 = () => {
     });
     setDrinks(updatedDrinks);
   };
+
+  const getMessageForBAC = () => {
+    if (calculatedBACAfterDeduction < 0.5) {
+      return {
+        message: "You are safe to drive.",
+        symbol: "✅",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path
+              fill="white"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.29 9.71l-5.29 5.3-3.29-3.3L7 14.47l4 4 6-6z"
+            />
+          </svg>
+        ),
+        backgroundColor: "green",
+        color: "white",
+      };
+    } else if (
+      calculatedBACAfterDeduction >= 0.5 &&
+      calculatedBACAfterDeduction <= 1.0
+    ) {
+      return {
+        message: "Caution! Your ability to drive may be impaired.",
+        symbol: "⚠️",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path
+              fill="yellow"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16h-1v-6h2v5h-1v1zm0-7h-1V7h2v4z"
+            />
+          </svg>
+        ),
+        backgroundColor: " #806000",
+        color: "black",
+      };
+    } else {
+      return {
+        message: "Danger! You should not drive.",
+        symbol: "❌",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path
+              fill="red"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16h-1v-6h2v5h-1v1zm0-7h-1V7h2v4z"
+            />
+          </svg>
+        ),
+        backgroundColor: "#800000",
+        color: "#fff",
+      };
+    }
+  };
+
+  const { message, symbol, icon, backgroundColor, color } = getMessageForBAC();
 
   return (
     <div>
@@ -383,17 +454,32 @@ const BACCalculator22 = () => {
         </section>
 
         <fieldset className="results-section border">
-          <legend className="text-center mb-2 p-2 border">
-            Result Section
+          <legend className="text-center mb-2 p-2 border px-3 ">
+            Results Section
           </legend>
+
+          {formSubmitted && (
+            <div
+              style={{ backgroundColor, color }}
+              className="flex justify-around items-center min-h-12"
+            >
+              {/* <h3>Calculated BAC After Deduction (per 100 milliliters):</h3> */}
+              {/* <p>{calculatedBACAfterDeduction.toFixed(2)}</p> */}
+              <div className="w-fit">{icon}</div>
+              <p className="flex-1 ">{message}</p>
+              <div className="w-fit">{symbol}</div>
+            </div>
+          )}
+
           <div className="  text-center">
-            <div className="font-bold text-3xl p-1 border">
-              {renderResult(
-                "Calculated BAC  ",
-                <div className="text-5xl p-1">
-                  {calculatedBACAfterDeduction.toFixed(2)}
-                </div>
-              )}
+            <div
+              style={{ backgroundColor }}
+              className="font-bold text-3xl p-1 border"
+            >
+              <h3>Calculated BAC</h3>
+              <p className="text-5xl">
+                {calculatedBACAfterDeduction.toFixed(2)}
+              </p>
               <p className="text-base">(per 100 milliliters)</p>
             </div>
             <div>
