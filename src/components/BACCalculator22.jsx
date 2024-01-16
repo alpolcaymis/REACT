@@ -141,6 +141,22 @@ const BACCalculator22 = () => {
     setDrinks(updatedDrinks);
   };
 
+  const getDefaultValuesForType = (drinkType) => {
+    switch (drinkType) {
+      case "beer":
+        return { amount: "1", volume: "500", percentage: "5" };
+      case "wine":
+        return { amount: "1", volume: "150", percentage: "13" };
+      case "distilled":
+        return { amount: "1", volume: "50", percentage: "40" };
+      case "liqueurs":
+        return { amount: "1", volume: "50", percentage: "25" };
+      // Add cases for other drink types if needed
+      default:
+        return {};
+    }
+  };
+
   const handleTypeChange = (id, value) => {
     const updatedDrinks = drinks.map((drink) => {
       if (drink.id === id) {
@@ -221,7 +237,7 @@ const BACCalculator22 = () => {
               >
                 <div className="drink-content flex-1 ">
                   <label>
-                    {/* Type: */}
+                    Type:
                     <select
                       id={`type-${drink.id}`}
                       value={drink.type}
@@ -247,7 +263,6 @@ const BACCalculator22 = () => {
                         Amount:
                         <input
                           type="number"
-                          placeholder="amount"
                           id={`amount-${drink.id}`}
                           min="0"
                           max="20"
@@ -259,14 +274,12 @@ const BACCalculator22 = () => {
                               e.target.value
                             )
                           }
-                          required
                         />
                       </label>
                       <label>
                         Volume:
                         <input
                           type="number"
-                          placeholder="volume mL"
                           id={`volume-${drink.id}`}
                           min="1"
                           max="1000"
@@ -278,14 +291,12 @@ const BACCalculator22 = () => {
                               e.target.value
                             )
                           }
-                          required
                         />
                       </label>
                       <label>
-                        Percentage: %
+                        Percentage:
                         <input
                           type="number"
-                          placeholder="Percentage %"
                           id={`percentage-${drink.id}`}
                           min="0"
                           max="100"
@@ -297,7 +308,6 @@ const BACCalculator22 = () => {
                               e.target.value
                             )
                           }
-                          required
                         />
                       </label>
                     </div>
@@ -325,11 +335,10 @@ const BACCalculator22 = () => {
               </div>
             ))}
           </div>
-          <div className="w-full mt-4 flex justify-center bg-yellow-800 bg-transparent    border border-2 rounded-md">
+          <div className="w-full mt-4 flex justify-center bg-[#99530d8b] bg-transparent    border border-2 rounded-md">
             <button
-              className="flex justify-center gap-1  py-2
-              
-              text-sm w-full bg-transparent  active:bg-white hover:bg-white
+              className="flex justify-center items-center gap-1 py-2              
+              text-sm w-full    bg-white bg-opacity-25 hover:bg-opacity-45 focus:bg-opacity-45 active:bg-opacity-45
               bg-emerald-950 
               "
               type="button"
@@ -349,32 +358,34 @@ const BACCalculator22 = () => {
 
         <fieldset className="additional-section my-4 border">
           <legend className="text-center  px-5">Additional Information</legend>
-          <div className="text-center">
-            <label>
+          <div className="flex flex-wrap justify-center text-center">
+            <label className="">
               How many hours have passed since the first drink?
-              <input
-                className="w-[80%] mb-2"
-                type="number"
-                id="hours"
-                min="0"
-                value={hoursPassed}
-                onChange={(e) => setHoursPassed(e.target.value)}
-                required
-              />
             </label>
+            <input
+              className="w-[80%] mb-2 "
+              type="number"
+              id="hours"
+              min="0"
+              value={hoursPassed}
+              onChange={(e) => setHoursPassed(e.target.value)}
+              required
+            />
           </div>
         </fieldset>
 
         <section className="calculate-button-section ">
-          <div className="flex justify-center">
-            <button type="submit" className="button">
+          <div className="flex justify-center ">
+            <button type="submit" className="button border-2 ">
               Calculate BAC
             </button>
           </div>
         </section>
 
         <fieldset className="results-section border">
-          <legend className="text-center m-2 p-2 border">Result Section</legend>
+          <legend className="text-center mb-2 p-2 border">
+            Result Section
+          </legend>
           <div className="  text-center">
             <div className="font-bold text-3xl p-1 border">
               {renderResult(
