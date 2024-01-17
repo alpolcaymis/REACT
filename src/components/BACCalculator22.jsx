@@ -6,11 +6,11 @@ import BeerIcon from "../icons/beer.svg";
 import WineIcon from "../icons/wine.svg";
 import DistilledIcon from "../icons/distilled.svg";
 import LiqueursIcon from "../icons/liqueurs.svg";
-import JagerIcon from "../icons/jager.png";
 import VodkaIcon from "../icons/vodka.svg";
-import WhiskeyIcon from "../icons/whiskey.svg";
 import { XCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import TimeIcon4 from "../assets/time4.svg";
+
+import Jager3 from "../images/jager4.png";
 
 const generateCustomId = () => {
   const timestamp = new Date().getTime();
@@ -112,7 +112,7 @@ const BACCalculator22 = () => {
       </div>
     ),
 
-    liqueurs: <img src={JagerIcon} alt="Liqueurs Icon" />,
+    liqueurs: <img src={Jager3} alt="Liqueurs Icon" />,
   };
 
   const handleSubmit = (e) => {
@@ -191,7 +191,7 @@ const BACCalculator22 = () => {
   const getMessageForBAC = () => {
     if (calculatedBACAfterDeduction < 0.5) {
       return {
-        message: "You are safe to drive.",
+        message: "Testi geçtiniz. Güvenle Trafiğe çıkabilirsiniz.",
         symbol: "✅",
         icon: (
           <svg
@@ -202,7 +202,7 @@ const BACCalculator22 = () => {
           >
             <path
               fill="white"
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.29 9.71l-5.29 5.3-3.29-3.3L7 14.47l4 4 6-6z"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16h-1v-6h2v5h-1v1zm0-7h-1V7h2v4z"
             />
           </svg>
         ),
@@ -214,7 +214,8 @@ const BACCalculator22 = () => {
       calculatedBACAfterDeduction <= 1.0
     ) {
       return {
-        message: "Caution! Your ability to drive may be impaired.",
+        message:
+          "Ceza yersin! 1-2 saat sonra trafiğe çıkabilirsiniz. Ek bilgi: yakalanırsanız hastanede kan testi talep etme hakkına hukuken sahipsiniz.",
         symbol: "⚠️",
         icon: (
           <svg
@@ -234,7 +235,7 @@ const BACCalculator22 = () => {
       };
     } else {
       return {
-        message: "Danger! You should not drive.",
+        message: "Kesin Ceza Yersin! Arabadan uzak durun!",
         symbol: "❌",
         icon: (
           <svg
@@ -262,7 +263,7 @@ const BACCalculator22 = () => {
       <form className="" onSubmit={handleSubmit}>
         <fieldset className="info-section border pb-4 p-2">
           <legend className="text-center">
-            <p className="px-4">Personal Information</p>
+            <p className="px-4">Fiziksel Özellikleriniz</p>
           </legend>
 
           <div className="flex justify-center items-center gap-3 p-2">
@@ -274,7 +275,7 @@ const BACCalculator22 = () => {
                 checked={gender === "man"}
                 onChange={() => setGender("man")}
               />
-              Man
+              Erkek
             </label>
             <label className="flex-1 text-center  rounded-md">
               <input
@@ -285,17 +286,17 @@ const BACCalculator22 = () => {
                 checked={gender === "woman"}
                 onChange={() => setGender("woman")}
               />
-              Woman
+              Kadın
             </label>
           </div>
 
           <div className="flex justify-around  mt-2 gap-3">
             <label>
-              Height (cm):
+              Boyunuz (cm):
               <input
                 type="number"
                 className="placeholder-zinc-300"
-                placeholder="centimeter"
+                placeholder="santimetre"
                 id="height"
                 min="110"
                 max="250"
@@ -305,7 +306,7 @@ const BACCalculator22 = () => {
               />
             </label>
             <label>
-              Weight (kg):
+              Kilonuz (kg):
               <input
                 type="number"
                 className="placeholder-zinc-300"
@@ -322,7 +323,7 @@ const BACCalculator22 = () => {
         </fieldset>
 
         <section className="drinks-section mt-4 ">
-          <p className="text-center">Drinks section</p>
+          <p className="text-center">Alınan Alkolleri Giriniz</p>
           <div className=" ">
             {drinks.map((drink, index) => (
               <div
@@ -331,7 +332,7 @@ const BACCalculator22 = () => {
               >
                 <div className="drink-content flex-1 ">
                   <label>
-                    Type:
+                    Alkol Türü :
                     <select
                       id={`type-${drink.id}`}
                       value={drink.type}
@@ -340,29 +341,27 @@ const BACCalculator22 = () => {
                       }
                       required
                     >
-                      <option value="beer">Beer</option>
-                      <option value="wine">Wine</option>
+                      <option value="beer">Bira</option>
+                      <option value="wine">Şarap</option>
                       <option value="distilled">
-                        Distilled (vodka,gin,tequila...)
+                        Distile (vodka,gin,tequila...)
                       </option>
                       <option value="liqueurs">
-                        Liqueurs (Baileys,Jägermeister,Campari...)
+                        Likör (Baileys,Jägermeister,Campari...)
                       </option>
                       {/* Add more options for other drink types as needed */}
                     </select>
                   </label>
 
                   <div className="flex justify-between items-center gap-2">
-                    <div className="w-[40%] h-auto">
-                      {drinkTypeIcons[drink.type]}
-                    </div>
+                    <div className="w-[50%]">{drinkTypeIcons[drink.type]}</div>
                     <div className="w-[50%] p-2">
                       <label>
-                        Amount : #
+                        Adet sayısı :
                         <input
                           className="placeholder-zinc-300"
                           type="number"
-                          placeholder="quantity"
+                          placeholder="adet"
                           id={`amount-${drink.id}`}
                           min="0"
                           max="30"
@@ -378,11 +377,11 @@ const BACCalculator22 = () => {
                         />
                       </label>
                       <label>
-                        Volume : (mL)
+                        hacim : (mL)
                         <input
                           type="number"
                           className="placeholder-zinc-300"
-                          placeholder="volume mL"
+                          placeholder="500 mL"
                           id={`volume-${drink.id}`}
                           min="1"
                           max="2000"
@@ -397,11 +396,11 @@ const BACCalculator22 = () => {
                           required
                         />
                       </label>
-                      <label>
-                        Percentage : %
+                      <label className="">
+                        <p className=" ">Alkol oranı: %</p>
                         <input
                           type="number"
-                          className="placeholder-zinc-300"
+                          className="placeholder-zinc-300 "
                           placeholder="vol % abv"
                           id={`percentage-${drink.id}`}
                           min="0"
@@ -458,7 +457,7 @@ const BACCalculator22 = () => {
                 stroke="currentColor"
                 strokeWidth="0.01"
               />
-              Add Drink
+              Yeni <strong>Alkol Ekle</strong>
             </button>
           </div>
         </section>
@@ -466,7 +465,7 @@ const BACCalculator22 = () => {
         <fieldset className="additional-section my-4 border">
           <legend className="text-center  px-5">
             <div className="flex justify-center items-center gap-1">
-              Additional Information
+              Alkol Alma Süresi
               <img
                 src={TimeIcon4}
                 alt="timeicon"
@@ -475,11 +474,11 @@ const BACCalculator22 = () => {
             </div>
           </legend>
           <div className="flex flex-wrap justify-center text-center">
-            <label htmlFor="hours" className="">
-              How many hours have passed since the first drink?
+            <label htmlFor="hours" className="mb-2">
+              İlk Alkolü kaç saat önce içtin?
             </label>
             <input
-              className="w-[80%] mb-2 "
+              className="w-[80%] mb-3 "
               type="number"
               id="hours"
               min="0"
@@ -493,14 +492,14 @@ const BACCalculator22 = () => {
         <section className="calculate-button-section ">
           <div className="flex justify-center ">
             <button type="submit" className="button border-2 ">
-              Calculate BAC
+              Promil Hesapla
             </button>
           </div>
         </section>
 
         <fieldset className="results-section border">
           <legend className="text-center mb-2 p-2 border px-3 ">
-            Results Section
+            TEST SONUÇLARI
           </legend>
 
           {formSubmitted && (
@@ -509,7 +508,7 @@ const BACCalculator22 = () => {
               className="flex justify-around items-center min-h-12"
             >
               <div className="">{icon}</div>
-              <p className=" text-center">{message}</p>
+              <p className=" text-center ">{message}</p>
               <div className="">{symbol}</div>
             </div>
           )}
@@ -519,24 +518,28 @@ const BACCalculator22 = () => {
               style={{ backgroundColor }}
               className="font-bold text-3xl p-1 border"
             >
-              <h3>Calculated BAC</h3>
+              <h3>Promil</h3>
               <p className="text-5xl">
                 {calculatedBACAfterDeduction.toFixed(2)}
               </p>
-              <p className="text-base">(per 100 milliliters)</p>
+              <p className="text-base">(her 100 ml kan için)</p>
             </div>
             <div>
-              {renderResult("Blood Volume (mL)", bloodVolume.toFixed(2))}
-              {renderResult("Total Alcohol (mL)", totalAlcoholMillimeter)}
+              {renderResult("Kan Hacminiz (mL)", bloodVolume.toFixed(2))}
               {renderResult(
-                "Total Alcohol Milligram",
-                totalAlcoholMilligram.toFixed(2)
+                "Toplam Alınan Alkol (mL)",
+                totalAlcoholMillimeter.toFixed(1)
+              )}
+
+              {renderResult(
+                "Toplam Alınan Alkol (mg)",
+                totalAlcoholMilligram.toFixed(1)
               )}
               {renderResult(
-                "Calculated BAC Before Time Effect Deduction ",
+                "Promil (İlk Alındığı Zaman) ",
                 calculatedBACBeforeDeduction.toFixed(2)
               )}
-              <p className="text-xs">(per 100 milliliters)</p>
+              <p className="text-xs">(her 100 ml kan için)</p>
             </div>
           </div>
         </fieldset>

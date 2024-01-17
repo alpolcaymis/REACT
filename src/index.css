@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,10 +26,18 @@ h1 {
   color: #2f4444;
 }
 
+h2 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  color: #2f4444;
+}
+
 form {
   width: 90%;
   max-width: 40rem;
-  margin: 3rem auto;
+  margin: 2rem auto 3rem;
   padding: 2rem;
   background: linear-gradient(180deg, #253c3c, #1d4949);
   border-radius: 8px;
@@ -110,7 +119,7 @@ select {
 /* FLOW BANNER CSS */
 .text {
   color: #939597;
-  animation: flowing 10s linear infinite;
+  animation: flowing 60s linear infinite;
   transform: translateX(100%);
 }
 .text span {
@@ -122,12 +131,18 @@ select {
 
 .text em {
   font-style: normal;
+  font-weight: bold;
   color: #00eeff;
+}
+.text i {
+  font-style: normal;
+  font-weight: bold;
+  color: goldenrod;
 }
 
 @keyframes flowing {
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-1400%);
   }
   0% {
     transform: translateX(100%);
