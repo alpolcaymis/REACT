@@ -397,7 +397,7 @@ const BACCalculator22 = () => {
                         />
                       </label>
                       <label className="">
-                        <p className=" ">Alkol oranı: %</p>
+                        <p className=" truncate">Alkol oranı: %</p>
                         <input
                           type="number"
                           className="placeholder-zinc-300 "
@@ -478,7 +478,7 @@ const BACCalculator22 = () => {
               İlk Alkolü kaç saat önce içtin?
             </label>
             <input
-              className="w-[80%] mb-3 "
+              className="w-[80%] mb-3  font-mono text-xl "
               type="number"
               id="hours"
               min="0"

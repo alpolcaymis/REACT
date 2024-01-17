@@ -30,8 +30,7 @@ export default function FlowBanner() {
         <span>
           Adalet Bakanlığı Adli Tıp Kurumunun 160 – 971119-151 T. No ve 179
           Karar No’lu, 18 Aralık 1997 Tarihli raporuna göre Kandaki alkol oranı{" "}
-          <i> 1 saatte </i> ortalama olarak da 15 mg / dl{" "}
-          <em> (0.15 promil) </em>
+          <i> 1 saatte </i> ortalama olarak 15 mg / dl <em> (0.15 promil) </em>
           değerinde azalma gösterir.
         </span>
       </p>
