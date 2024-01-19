@@ -1,13 +1,13 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback } from 'react';
 
-import Places from "./components/Places.jsx";
-import { AVAILABLE_PLACES } from "./data.js";
-import Modal from "./components/Modal.jsx";
-import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
-import logoImg from "./assets/logo.png";
-import { sortPlacesByDistance } from "./loc.js";
+import Places from './components/Places.jsx';
+import { AVAILABLE_PLACES } from './data.js';
+import Modal from './components/Modal.jsx';
+import DeleteConfirmation from './components/DeleteConfirmation.jsx';
+import logoImg from './assets/logo.png';
+import { sortPlacesByDistance } from './loc.js';
 
-const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
 const storedPlaces = storedIds.map((id) =>
   AVAILABLE_PLACES.find((place) => place.id === id)
 );
@@ -48,10 +48,10 @@ function App() {
       return [place, ...prevPickedPlaces];
     });
 
-    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
     if (storedIds.indexOf(id) === -1) {
       localStorage.setItem(
-        "selectedPlaces",
+        'selectedPlaces',
         JSON.stringify([id, ...storedIds])
       );
     }
@@ -63,9 +63,9 @@ function App() {
     );
     setModalIsOpen(false);
 
-    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
     localStorage.setItem(
-      "selectedPlaces",
+      'selectedPlaces',
       JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current))
     );
   }, []);
@@ -83,15 +83,14 @@ function App() {
         <img src={logoImg} alt="Stylized globe" />
         <h1>PlacePicker</h1>
         <p>
-          Discover places worth visiting near you and create your personal
-          collection of places.
-          <br /> We are behind you to plan your day.
+          Create your personal collection of places you would like to visit or
+          you have visited.
         </p>
       </header>
       <main>
         <Places
           title="I'd like to visit ..."
-          fallbackText={"Select the places you would like to visit below."}
+          fallbackText={'Select the places you would like to visit below.'}
           places={pickedPlaces}
           onSelectPlace={handleStartRemovePlace}
         />
