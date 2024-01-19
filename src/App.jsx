@@ -1,86 +1,129 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { CORE_CONCEPTS } from "./data.js";
-import Header from "./components/Header/Header.jsx";
-import CoreConcept from "./components/CoreConcept.jsx";
-import TabButton from "./components/TabButton.jsx";
-import { EXAMPLES } from "./data.js";
+import NewProject from './components/NewProject.jsx';
+import NoProjectSelected from './components/NoProjectSelected.jsx';
+import ProjectsSidebar from './components/ProjectsSidebar.jsx';
+import SelectedProject from './components/SelectedProject.jsx';
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState();
+  const [projectsState, setProjectsState] = useState({
+    selectedProjectId: undefined,
+    projects: [],
+    tasks: [],
+  });
 
-  function handleSelect(selectedButton) {
-    // selectedButton => 'components', 'jsx', 'props', 'state'
-    setSelectedTopic(selectedButton);
-    // console.log(selectedTopic);
+  function handleAddTask(text) {
+    setProjectsState((prevState) => {
+      const taskId = Math.random();
+      const newTask = {
+        text: text,
+        projectId: prevState.selectedProjectId,
+        id: taskId,
+      };
+
+      return {
+        ...prevState,
+        tasks: [newTask, ...prevState.tasks],
+      };
+    });
   }
 
-  console.log("APP COMPONENT EXECUTING");
+  function handleDeleteTask(id) {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  }
 
-  let tabContent = <p>Please select a topic.</p>;
+  function handleSelectProject(id) {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: id,
+      };
+    });
+  }
 
-  if (selectedTopic) {
-    tabContent = (
-      <div id="tab-content">
-        <h3>{EXAMPLES[selectedTopic].title}</h3>
-        <p>{EXAMPLES[selectedTopic].description}</p>
-        <pre>
-          <code>{EXAMPLES[selectedTopic].code}</code>
-        </pre>
-      </div>
+  function handleStartAddProject() {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: null,
+      };
+    });
+  }
+
+  function handleCancelAddProject() {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+      };
+    });
+  }
+
+  function handleAddProject(projectData) {
+    setProjectsState((prevState) => {
+      const projectId = Math.random();
+      const newProject = {
+        ...projectData,
+        id: projectId,
+      };
+
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+        projects: [...prevState.projects, newProject],
+      };
+    });
+  }
+
+  function handleDeleteProject() {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+        projects: prevState.projects.filter(
+          (project) => project.id !== prevState.selectedProjectId
+        ),
+      };
+    });
+  }
+
+  const selectedProject = projectsState.projects.find(
+    (project) => project.id === projectsState.selectedProjectId
+  );
+
+  let content = (
+    <SelectedProject
+      project={selectedProject}
+      onDelete={handleDeleteProject}
+      onAddTask={handleAddTask}
+      onDeleteTask={handleDeleteTask}
+      tasks={projectsState.tasks}
+    />
+  );
+
+  if (projectsState.selectedProjectId === null) {
+    content = (
+      <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject} />
     );
+  } else if (projectsState.selectedProjectId === undefined) {
+    content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
 
   return (
-    <div>
-      <Header />
-      <main>
-        <section id="core-concepts">
-          <h2>Core Concepts</h2>
-          <ul>
-            {CORE_CONCEPTS.map((conceptItem) => (
-              <CoreConcept key={conceptItem.title} {...conceptItem} />
-            ))}
-
-            {/* to see spread operator effect on object */}
-            {CORE_CONCEPTS.map((conceptItem) =>
-              console.log({ ...conceptItem })
-            )}
-            {CORE_CONCEPTS.map((conceptItem) => console.log({ conceptItem }))}
-          </ul>
-        </section>
-        <section id="examples">
-          <h2>Examples</h2>
-          <menu>
-            <TabButton
-              isSelected={selectedTopic === "components"}
-              onSelect={() => handleSelect("components")}
-            >
-              Components
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === "jsx"}
-              onSelect={() => handleSelect("jsx")}
-            >
-              JSX
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === "props"}
-              onSelect={() => handleSelect("props")}
-            >
-              Props
-            </TabButton>
-            <TabButton
-              isSelected={selectedTopic === "state"}
-              onSelect={() => handleSelect("state")}
-            >
-              State
-            </TabButton>
-          </menu>
-          {tabContent}
-        </section>
-      </main>
-    </div>
+    <main className="h-screen my-8 flex gap-8">
+      <ProjectsSidebar
+        onStartAddProject={handleStartAddProject}
+        projects={projectsState.projects}
+        onSelectProject={handleSelectProject}
+        selectedProjectId={projectsState.selectedProjectId}
+      />
+      {content}
+    </main>
   );
 }
 
