@@ -7,7 +7,7 @@ import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
 import { data5 } from "./data5.js";
-// import { data6 } from "./data6.js";
+
 let AVAILABLE_PLACES = data5;
 
 const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
