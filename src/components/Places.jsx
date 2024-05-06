@@ -1,4 +1,6 @@
-import icon from "../assets/send.png";
+import icon from '../assets/send.png';
+import dummy from '../assets/indir.jpg';
+
 export default function Places({ name, places, fallbackText, onSelectPlace }) {
   return (
     <section className="places-category">
@@ -9,12 +11,7 @@ export default function Places({ name, places, fallbackText, onSelectPlace }) {
           {places.map((place) => (
             <li key={place.cid} className="place-item">
               <button onClick={() => onSelectPlace(place.cid)}>
-                {/* <img src={place.photo} alt="" className="photo" /> */}
-                <img
-                  src={place.photo || "../assets/indir.jpg"}
-                  alt=""
-                  className="photo"
-                />
+                <img src={place.photo || dummy} alt="" className="photo" />
 
                 <h3>{place.name}</h3>
                 <h4>{place.borough}</h4>

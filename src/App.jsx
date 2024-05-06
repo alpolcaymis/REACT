@@ -1,16 +1,17 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback } from 'react';
 
-import Places from "./components/Places.jsx";
-import Modal from "./components/Modal.jsx";
-import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
-import logoImg from "./assets/logo.png";
-import { sortPlacesByDistance } from "./loc.js";
+import Places from './components/Places.jsx';
+import Modal from './components/Modal.jsx';
+import DeleteConfirmation from './components/DeleteConfirmation.jsx';
+import logoImg from './assets/logo.png';
+import { sortPlacesByDistance } from './loc.js';
 
-import { data5 } from "./data5.js";
+import { data5 } from './data5.js';
+import { data6 } from './mini_data.js';
 
-let AVAILABLE_PLACES = data5;
+let AVAILABLE_PLACES = data6;
 
-const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
 const storedPlaces = storedIds.map(
   (id) => AVAILABLE_PLACES.find((place) => place.cid === id) // place.id =>  place.cid oldu
 );
@@ -51,10 +52,10 @@ function App() {
       return [place, ...prevPickedPlaces];
     });
 
-    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
     if (storedIds.indexOf(id) === -1) {
       localStorage.setItem(
-        "selectedPlaces",
+        'selectedPlaces',
         JSON.stringify([id, ...storedIds])
       );
     }
@@ -66,9 +67,9 @@ function App() {
     );
     setModalIsOpen(false);
 
-    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
     localStorage.setItem(
-      "selectedPlaces",
+      'selectedPlaces',
       JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current)) //? bence gerek yok yinede id'i cid yaptım
     );
   }, []);
@@ -84,17 +85,17 @@ function App() {
 
       <header>
         <img src={logoImg} alt="Stylized globe" />
-        <h1>PlacePicker</h1>
+        <h1>Alp Mekan Öneriyor</h1>
         <p>
-          Discover places worth visiting near you and create your personal
-          collection of places.
-          <br /> We are behind you to plan your day.
+          Sana en yakın gidilmeye değer yerleri keşfet, kaydet. Acil plan lazım
+          olursa yanındayım.
+          <br /> "We are behind you to bro."
         </p>
       </header>
       <main>
         <Places
           name="I'd like to visit ..." //name => title oldu
-          fallbackText={"Select the places you would like to visit below."}
+          fallbackText={'Select the places you would like to visit below.'}
           places={pickedPlaces}
           onSelectPlace={handleStartRemovePlace}
         />
