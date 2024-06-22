@@ -83,21 +83,7 @@ const BACCalculator22 = () => {
   const drinkTypeIcons = {
     beer: <img src={BeerIcon} alt="Beer Icon" />,
     wine: <img src={WineIcon} alt="Wine Icon" />,
-    distilled: (
-      <div className="relative">
-        <img
-          className="absolute right-3/4 w-1/2 bottom-0 border-none"
-          src={LiqueursIcon}
-          alt="Distilled Icon"
-        />
-        <img
-          className="absolute right-4 mr-2 bottom-0 border-none"
-          src={VodkaIcon}
-          alt="Distilled Icon"
-        />
-        <img className="" src={DistilledIcon} alt="Distilled Icon" />
-      </div>
-    ),
+    distilled: <img src={VodkaIcon} alt="Distilled Icon" />,
     liqueurs: <img src={Jager3} alt="Liqueurs Icon" />,
     raki: <img src={DistilledIcon} alt="Raki Icon" />, // Add icon for raki
     "duble-raki": <img src={DistilledIcon} alt="Duble Raki Icon" />, // Add icon for duble raki

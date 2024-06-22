@@ -85,8 +85,16 @@ const DrinkItem = ({
       </div>
 
       <div className="flex items-center mt-2">
-        <div className="flex-grow mr-6">{drinkTypeIcons[drink.type]}</div>{" "}
-        {/* Added gap between image and inputs */}
+        <div className="flex-grow mr-6 flex items-center justify-center">
+          <div className="max-h-[180px]">
+            <img
+              src={drinkTypeIcons[drink.type].props.src}
+              alt={drinkTypeIcons[drink.type].props.alt}
+              className="max-h-[180px]"
+            />
+          </div>
+        </div>{" "}
+        {/* Added max height for image */}
         <div className="flex-none grid grid-cols-1 md:grid-cols-3 gap-1">
           {["amount", "volume", "percentage"].map((field) => (
             <div key={field} className="flex flex-col items-center">

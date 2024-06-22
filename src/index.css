@@ -110,12 +110,6 @@ header {
   box-shadow: 0 2px 10px rgba(193, 193, 193, 0.8);
 }
 
-.button:hover,
-.button:focus,
-.button:active {
-  background-color: #319890;
-}
-
 /* FLOW BANNER CSS */
 .text {
   color: #939597;
