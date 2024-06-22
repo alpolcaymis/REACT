@@ -114,7 +114,7 @@ const DrinkItem = ({
                   <MinusCircleIcon className="w-6 h-6 text-gray-600" />
                 </button>
                 <input
-                  className="w-16 p-1 text-center border rounded placeholder-gray-300"
+                  className="w-16 p-1 text-center border rounded font-bold placeholder-gray-300 text-[1.1rem]" // Updated class
                   type="number"
                   min="0"
                   max={field === "percentage" ? "100" : "2000"}
