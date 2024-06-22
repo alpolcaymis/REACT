@@ -106,7 +106,7 @@ const DrinkItem = ({
                   onClick={() =>
                     decrement(
                       field,
-                      field === "amount" ? 1 : field === "volume" ? 10 : 2.25
+                      field === "amount" ? 1 : field === "volume" ? 10 : 0.5
                     )
                   }
                   aria-label={`Decrease ${field}`}
@@ -114,9 +114,10 @@ const DrinkItem = ({
                   <MinusCircleIcon className="w-6 h-6 text-gray-600" />
                 </button>
                 <input
-                  className="w-16 p-1 text-center border rounded font-bold placeholder-gray-300 text-[1.1rem]" // Updated class
+                  className="w-16 p-1 text-center border rounded font-bold placeholder-gray-300 text-[1.1rem] h-10" // Updated class
                   type="number"
                   min="0"
+                  step={field === "percentage" ? "0.01" : "1"} // Allow float numbers for percentage
                   max={field === "percentage" ? "100" : "2000"}
                   value={drink[field]}
                   placeholder={
@@ -137,7 +138,7 @@ const DrinkItem = ({
                   onClick={() =>
                     increment(
                       field,
-                      field === "amount" ? 1 : field === "volume" ? 10 : 2.25
+                      field === "amount" ? 1 : field === "volume" ? 10 : 0.5
                     )
                   }
                   aria-label={`Increase ${field}`}
