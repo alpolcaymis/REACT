@@ -12,6 +12,7 @@ import DistilledIcon from "../icons/distilled.svg";
 import LiqueursIcon from "../icons/liqueurs.svg";
 import VodkaIcon from "../icons/vodka.svg";
 import TimeIcon4 from "../assets/time4.svg";
+import RakiIcon from "../icons/vodka.svg"; // Make sure the path is correct
 
 const generateCustomId = () => {
   const timestamp = new Date().getTime();
@@ -98,6 +99,7 @@ const BACCalculator22 = () => {
       </div>
     ),
     liqueurs: <img src={Jager3} alt="Liqueurs Icon" />,
+    raki: <img src={RakiIcon} alt="Raki Icon" />, // Added raki option
   };
 
   const handleSubmit = (e) => {
@@ -154,6 +156,8 @@ const BACCalculator22 = () => {
         return { amount: "1", volume: "50", percentage: "40" };
       case "liqueurs":
         return { amount: "1", volume: "50", percentage: "25" };
+      case "raki": // Added raki case
+        return { amount: "1", volume: "50", percentage: "45" }; // Example values
       default:
         return {};
     }

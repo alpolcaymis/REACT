@@ -25,6 +25,7 @@ const DrinkItem = ({
           <option value="liqueurs">
             Likör (Baileys,Jägermeister,Campari...)
           </option>
+          <option value="raki">Rakı</option> {/* Added raki option */}
         </select>
       </label>
 
