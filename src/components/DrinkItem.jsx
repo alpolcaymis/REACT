@@ -45,6 +45,9 @@ const DrinkItem = ({
                   Likör (Baileys,Jägermeister,Campari...)
                 </option>
                 <option value="raki">Rakı</option>
+                <option value="duble-raki">Duble Rakı</option>
+                <option value="jager-shot">Jager Shot</option>
+                <option value="tekila-shot">Tekila Shot</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg
