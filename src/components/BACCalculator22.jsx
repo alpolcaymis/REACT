@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 // Import SVG icons
+import Jager3 from "../images/jager4.png";
 import BeerIcon from "../icons/beer.svg";
 import WineIcon from "../icons/wine.svg";
 import DistilledIcon from "../icons/distilled.svg";
@@ -9,8 +10,6 @@ import LiqueursIcon from "../icons/liqueurs.svg";
 import VodkaIcon from "../icons/vodka.svg";
 import { XCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import TimeIcon4 from "../assets/time4.svg";
-
-import Jager3 from "../images/jager4.png";
 
 const generateCustomId = () => {
   const timestamp = new Date().getTime();
