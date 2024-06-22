@@ -13,17 +13,13 @@ const DrinkItem = ({
   handleDeleteDrink,
   handleTypeChange,
 }) => {
-  // Increment and decrement functions for the drink attributes
-  const increment = (field, max = Number.MAX_SAFE_INTEGER) => {
-    if (drink[field] < max) {
-      handleInputChange(drink.id, field, Number(drink[field] || 0) + 1);
-    }
+  // Increment and decrement functions for the drink attributes with specified step values
+  const increment = (field, step) => {
+    handleInputChange(drink.id, field, (Number(drink[field]) || 0) + step);
   };
 
-  const decrement = (field, min = 0) => {
-    if (drink[field] > min) {
-      handleInputChange(drink.id, field, Number(drink[field] || 0) - 1);
-    }
+  const decrement = (field, step) => {
+    handleInputChange(drink.id, field, (Number(drink[field]) || 0) - step);
   };
 
   return (
@@ -100,15 +96,22 @@ const DrinkItem = ({
                   ? "Alkol oranı (%)"
                   : `${field.charAt(0).toUpperCase() + field.slice(1)}:`}
               </label>
-              <div className="flex items-center">
+              <div className="flex items-center bg-[#a0b0b0] rounded">
+                {" "}
+                {/* Updated background color */}
                 <button
-                  onClick={() => decrement(field)}
+                  onClick={() =>
+                    decrement(
+                      field,
+                      field === "amount" ? 1 : field === "volume" ? 10 : 2.25
+                    )
+                  }
                   aria-label={`Decrease ${field}`}
                 >
                   <MinusCircleIcon className="w-6 h-6 text-gray-600" />
                 </button>
                 <input
-                  className="w-16 p-1 text-center border rounded"
+                  className="w-16 p-1 text-center border rounded placeholder-gray-300"
                   type="number"
                   min="0"
                   max={field === "percentage" ? "100" : "2000"}
@@ -129,7 +132,10 @@ const DrinkItem = ({
                 />
                 <button
                   onClick={() =>
-                    increment(field, field === "percentage" ? 100 : 2000)
+                    increment(
+                      field,
+                      field === "amount" ? 1 : field === "volume" ? 10 : 2.25
+                    )
                   }
                   aria-label={`Increase ${field}`}
                 >
