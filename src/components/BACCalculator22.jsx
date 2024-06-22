@@ -9,10 +9,10 @@ import CalculateButton from "./CalculateButton";
 import Jager3 from "../images/jager4.png";
 import BeerIcon from "../icons/beer.svg";
 import WineIcon from "../icons/wine.svg";
-import DistilledIcon from "../icons/distilled.svg";
-import LiqueursIcon from "../icons/liqueurs.svg";
 import VodkaIcon from "../icons/vodka.svg";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import Raki from "../images/raki.png";
+import Jagershot from "../images/jagershot.png";
+import Tekilashot from "../images/tekilashot.png";
 
 const generateCustomId = () => {
   const timestamp = new Date().getTime();
@@ -24,9 +24,9 @@ const BACCalculator22 = () => {
   const initialDrink = {
     id: generateCustomId(),
     type: "beer",
-    amount: "",
-    volume: "",
-    percentage: "",
+    amount: "1",
+    volume: "500",
+    percentage: "5",
   };
 
   const [drinks, setDrinks] = useState([initialDrink]);
@@ -85,10 +85,10 @@ const BACCalculator22 = () => {
     wine: <img src={WineIcon} alt="Wine Icon" />,
     distilled: <img src={VodkaIcon} alt="Distilled Icon" />,
     liqueurs: <img src={Jager3} alt="Liqueurs Icon" />,
-    raki: <img src={DistilledIcon} alt="Raki Icon" />, // Add icon for raki
-    "duble-raki": <img src={DistilledIcon} alt="Duble Raki Icon" />, // Add icon for duble raki
-    "jager-shot": <img src={Jager3} alt="Jager Shot Icon" />, // Add icon for jager shot
-    "tekila-shot": <img src={VodkaIcon} alt="Tekila Shot Icon" />, // Add icon for tekila shot
+    raki: <img src={Raki} alt="Raki Icon" />, // Add icon for raki
+    "duble-raki": <img src={Raki} alt="Duble Raki Icon" />, // Add icon for duble raki
+    "jager-shot": <img src={Jagershot} alt="Jager Shot Icon" />, // Add icon for jager shot
+    "tekila-shot": <img src={Tekilashot} alt="Tekila Shot Icon" />, // Add icon for tekila shot
   };
 
   const handleSubmit = (e) => {
@@ -113,9 +113,9 @@ const BACCalculator22 = () => {
       {
         id: generateCustomId(),
         type: "beer",
-        amount: "",
-        volume: "",
-        percentage: "",
+        amount: "1",
+        volume: "500",
+        percentage: "5",
       },
     ]);
   };
@@ -146,13 +146,13 @@ const BACCalculator22 = () => {
       case "liqueurs":
         return { amount: "1", volume: "50", percentage: "25" };
       case "raki":
-        return { amount: "1", volume: "50", percentage: "45" }; // Default values for raki
+        return { amount: "1", volume: "40", percentage: "45" }; // Default values for raki
       case "duble-raki":
-        return { amount: "1", volume: "100", percentage: "45" }; // Default values for duble raki
+        return { amount: "1", volume: "80", percentage: "45" }; // Default values for duble raki
       case "jager-shot":
-        return { amount: "1", volume: "30", percentage: "35" }; // Default values for jager shot
+        return { amount: "1", volume: "50", percentage: "35" }; // Default values for jager shot
       case "tekila-shot":
-        return { amount: "1", volume: "30", percentage: "40" }; // Default values for tekila shot
+        return { amount: "1", volume: "70", percentage: "38" }; // Default values for tekila shot
       default:
         return {};
     }

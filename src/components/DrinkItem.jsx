@@ -1,4 +1,3 @@
-// DrinkItem.js
 import React from "react";
 import {
   XCircleIcon,
@@ -15,11 +14,15 @@ const DrinkItem = ({
 }) => {
   // Increment and decrement functions for the drink attributes with specified step values
   const increment = (field, step) => {
-    handleInputChange(drink.id, field, (Number(drink[field]) || 0) + step);
+    const newValue = (Number(drink[field]) || 0) + step;
+    handleInputChange(drink.id, field, newValue);
   };
 
   const decrement = (field, step) => {
-    handleInputChange(drink.id, field, (Number(drink[field]) || 0) - step);
+    const newValue = (Number(drink[field]) || 0) - step;
+    if (newValue >= 0) {
+      handleInputChange(drink.id, field, newValue);
+    }
   };
 
   return (
@@ -46,7 +49,7 @@ const DrinkItem = ({
                 </option>
                 <option value="raki">Rakı</option>
                 <option value="duble-raki">Duble Rakı</option>
-                <option value="jager-shot">Jager Shot</option>
+                <option value="jager-shot">Jägermeister Shot</option>
                 <option value="tekila-shot">Tekila Shot</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -67,9 +70,9 @@ const DrinkItem = ({
           </label>
         </div>
 
-        <div className="delete-icon flex-none w-[10%] ml-4">
+        <div className="delete-icon flex-none w-[10%] ml-4 flex flex-col items-center">
           <button
-            className="text-center"
+            className="text-center mb-1"
             type="button"
             onClick={() => handleDeleteDrink(drink.id)}
           >
@@ -79,13 +82,13 @@ const DrinkItem = ({
               stroke="currentColor"
               strokeWidth="2"
             />
-            Delete
           </button>
+          <label className="text-center">Delete</label>
         </div>
       </div>
 
       <div className="flex items-center mt-2">
-        <div className="flex-grow mr-6 flex items-center justify-center">
+        <div className="flex-grow mr-6 max-h-[180px] flex items-center justify-center">
           <div className="max-h-[180px]">
             <img
               src={drinkTypeIcons[drink.type].props.src}
@@ -137,9 +140,12 @@ const DrinkItem = ({
                       ? "vol % abv"
                       : ""
                   }
-                  onChange={(e) =>
-                    handleInputChange(drink.id, field, e.target.value)
-                  }
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value >= 0) {
+                      handleInputChange(drink.id, field, value);
+                    }
+                  }}
                   required
                 />
                 <button
