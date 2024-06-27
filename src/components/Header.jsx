@@ -5,7 +5,7 @@ export default function Header() {
         promil hesaplama online alkolmetre ölçer
       </h1>
       <h2 className="font-thin text-[0.8rem] text-center text-black uppercase font-sans font-bold text-3xl tracking-widest text-[#2f4444]">
-        Doğruluk oranı en yüksek test
+        yüksek Doğruluk oranlı en gerçekçi test
       </h2>
       <p className="text-[0.4rem] text-center text-black uppercase">
         ("Bu ölçümler veri bazlı tahminlere dayanmaktadır ve herhangi bir

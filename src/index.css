@@ -9,13 +9,13 @@
 
 body {
   margin: 0;
-  font-family: "Lato", serif;
+  /* font-family: "Lato", serif; */
+  font-family: "Quicksand", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(#d0d6d9, #b1b4ba);
   color: #d9e2f1;
   min-height: 100vh;
-  font-family: "Quicksand", sans-serif;
 }
 
 h1 {
