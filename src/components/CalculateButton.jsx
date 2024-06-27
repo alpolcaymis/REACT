@@ -4,7 +4,6 @@ const CalculateButton = ({ resultsRef }) => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = (e) => {
-    e.preventDefault();
     const form = e.target.form;
     if (form.checkValidity()) {
       setClicked(true);
