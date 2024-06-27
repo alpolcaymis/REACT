@@ -14,24 +14,25 @@ const PhysicalAttributes = ({
     </legend>
 
     <div className="flex justify-center items-center gap-3 p-2">
-      <label className=" flex-1 text-center  rounded-md">
+      <label className="flex flex-col items-center flex-1 text-center rounded-md">
         <input
           type="radio"
           id="gender-man"
           value="man"
           checked={gender === "man"}
           onChange={() => setGender("man")}
+          className="mb-1 h-6 w-6" // Adjusts the size of the radio button
         />
         Erkek
       </label>
-      <label className="flex-1 text-center  rounded-md">
+      <label className="flex flex-col items-center flex-1 text-center rounded-md">
         <input
-          className=""
           type="radio"
           id="gender-female"
           value="woman"
           checked={gender === "woman"}
           onChange={() => setGender("woman")}
+          className="mb-1 h-6 w-6" // Adjusts the size of the radio button
         />
         Kadın
       </label>

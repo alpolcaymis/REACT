@@ -240,7 +240,10 @@ const BACCalculator22 = () => {
 
   return (
     <div>
-      <form className="" onSubmit={handleSubmit}>
+      <form
+        className="w-11/12 max-w-xl mx-auto my-8 p-8 rounded-lg shadow-lg bg-gradient-to-b from-[#253c3c] to-[#1d4949]"
+        onSubmit={handleSubmit}
+      >
         <PhysicalAttributes
           gender={gender}
           setGender={setGender}
