@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PhysicalAttributes from "./PhysicalAttributes";
 import DrinkList from "./DrinkList";
 import AdditionalInfo from "./AdditionalInfo";
@@ -28,6 +28,8 @@ const BACCalculator22 = () => {
     volume: "500",
     percentage: "5",
   };
+
+  const resultsRef = useRef(null);
 
   const [drinks, setDrinks] = useState([initialDrink]);
 
@@ -105,6 +107,15 @@ const BACCalculator22 = () => {
     });
     setTotalAlcoholMillimeter(totalAlcohol);
     setTotalAlcoholMilligram(totalAlcohol * 0.789);
+
+    if (e.target.checkValidity()) {
+      if (resultsRef && resultsRef.current) {
+        resultsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Show validation errors
+      e.target.reportValidity();
+    }
   };
 
   const handleAddDrink = () => {
@@ -264,20 +275,22 @@ const BACCalculator22 = () => {
           hoursPassed={hoursPassed}
           setHoursPassed={setHoursPassed}
         />
-        <CalculateButton />
-        <ResultSection
-          formSubmitted={formSubmitted}
-          calculatedBACAfterDeduction={calculatedBACAfterDeduction}
-          bloodVolume={bloodVolume}
-          totalAlcoholMillimeter={totalAlcoholMillimeter}
-          totalAlcoholMilligram={totalAlcoholMilligram}
-          calculatedBACBeforeDeduction={calculatedBACBeforeDeduction}
-          message={message}
-          symbol={symbol}
-          icon={icon}
-          backgroundColor={backgroundColor}
-          color={color}
-        />
+        <CalculateButton scrollToRef={resultsRef} />
+        <section ref={resultsRef} className="results-section">
+          <ResultSection
+            formSubmitted={formSubmitted}
+            calculatedBACAfterDeduction={calculatedBACAfterDeduction}
+            bloodVolume={bloodVolume}
+            totalAlcoholMillimeter={totalAlcoholMillimeter}
+            totalAlcoholMilligram={totalAlcoholMilligram}
+            calculatedBACBeforeDeduction={calculatedBACBeforeDeduction}
+            message={message}
+            symbol={symbol}
+            icon={icon}
+            backgroundColor={backgroundColor}
+            color={color}
+          />
+        </section>
       </form>
     </div>
   );
