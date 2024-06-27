@@ -37,7 +37,7 @@ const ResultSection = ({
         </div>
       )}
 
-      <div className="  text-center">
+      <div className="lato  text-center">
         <div
           style={{ backgroundColor }}
           className="font-bold text-3xl p-1 border"

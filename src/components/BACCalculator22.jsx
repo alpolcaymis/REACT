@@ -95,23 +95,26 @@ const BACCalculator22 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    let totalAlcohol = 0;
-    drinks.forEach((drink) => {
-      const alcoholMillimeter = calculateAlcoholMillimeter(
-        drink.amount,
-        drink.volume,
-        drink.percentage
-      );
-      totalAlcohol += alcoholMillimeter;
-    });
-    setTotalAlcoholMillimeter(totalAlcohol);
-    setTotalAlcoholMilligram(totalAlcohol * 0.789);
 
     if (e.target.checkValidity()) {
-      if (resultsRef && resultsRef.current) {
-        resultsRef.current.scrollIntoView({ behavior: "smooth" });
-      }
+      // Perform any necessary calculations or actions here
+      setFormSubmitted(true);
+      let totalAlcohol = 0;
+      drinks.forEach((drink) => {
+        const alcoholMillimeter = calculateAlcoholMillimeter(
+          drink.amount,
+          drink.volume,
+          drink.percentage
+        );
+        totalAlcohol += alcoholMillimeter;
+      });
+      setTotalAlcoholMillimeter(totalAlcohol);
+      setTotalAlcoholMilligram(totalAlcohol * 0.789);
+
+      // // Scroll to results section
+      // if (resultsRef && resultsRef.current) {
+      //   resultsRef.current.scrollIntoView({ behavior: "smooth" });
+      // }
     } else {
       // Show validation errors
       e.target.reportValidity();
@@ -222,7 +225,7 @@ const BACCalculator22 = () => {
           </svg>
         ),
         backgroundColor: " #806000",
-        color: "black",
+        color: "white",
       };
     } else {
       return {
@@ -275,7 +278,7 @@ const BACCalculator22 = () => {
           hoursPassed={hoursPassed}
           setHoursPassed={setHoursPassed}
         />
-        <CalculateButton scrollToRef={resultsRef} />
+        <CalculateButton resultsRef={resultsRef} />
         <section ref={resultsRef} className="results-section">
           <ResultSection
             formSubmitted={formSubmitted}
