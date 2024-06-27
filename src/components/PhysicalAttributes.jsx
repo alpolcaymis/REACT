@@ -8,12 +8,12 @@ const PhysicalAttributes = ({
   weight,
   setWeight,
 }) => (
-  <fieldset className="info-section border pb-4 p-2">
+  <fieldset className="info-section border pb-2.5 p-2">
     <legend className="text-center">
       <p className="px-4">Fiziksel Özellikleriniz</p>
     </legend>
 
-    <div className="flex justify-center items-center gap-3 p-2">
+    <div className="flex justify-center items-center gap-3 px-2 py-0.5">
       <label className="flex flex-col items-center flex-1 text-center rounded-md">
         <input
           type="radio"
@@ -38,7 +38,7 @@ const PhysicalAttributes = ({
       </label>
     </div>
 
-    <div className="flex justify-around  mt-2 gap-3">
+    <div className="flex justify-around  mt-2 gap-6">
       <label>
         Boyunuz (cm):
         <input

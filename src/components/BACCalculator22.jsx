@@ -255,7 +255,7 @@ const BACCalculator22 = () => {
   return (
     <div>
       <form
-        className="w-11/12 max-w-xl mx-auto my-8 p-8 rounded-lg shadow-lg bg-gradient-to-b from-[#253c3c] to-[#1d4949]"
+        className="w-11/12 max-w-xl mx-auto my-8 mt-4 p-8 pt-6 rounded-lg shadow-lg bg-gradient-to-b from-[#253c3c] to-[#1d4949]"
         onSubmit={handleSubmit}
       >
         <PhysicalAttributes
@@ -295,6 +295,14 @@ const BACCalculator22 = () => {
           />
         </section>
       </form>
+      <footer>
+        <p className="text-[0.4rem] text-center text-black uppercase">
+          ("Bu ölçümler veri bazlı tahminlere dayanmaktadır ve herhangi bir
+          kesinlik teşkil etmemektedir. Buradaki verilere göre hareket ederek,
+          kendinizin ve etrafınızdakilerin can güvenliğini tehlikeye atmayınız
+          ❗")
+        </p>
+      </footer>
     </div>
   );
 };
