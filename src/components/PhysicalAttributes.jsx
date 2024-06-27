@@ -38,7 +38,7 @@ const PhysicalAttributes = ({
       </label>
     </div>
 
-    <div className="flex justify-around  mt-2 gap-6">
+    <div className="flex justify-around  mt-2 gap-4 px-1">
       <label>
         Boyunuz (cm):
         <input
